@@ -54,14 +54,37 @@ mysong_btn = driver.find_element_by_css_selector('#content > div.clearfix > butt
 mysong_btn.click()
 
 src = driver.page_source
+print(src)                              #이 코드로 문제가 해결됨 이유는 모름
 soup = BeautifulSoup(src)
 
-print(soup)
-
+# print(soup)
 
 # driver.close()
 
-list = soup.select_one('#tabMyListWrap > div > div > ul > li:nth-child(1) > a.btn-detail > strong.title.ellipsis')
-print(list)
+# driver.close()
+# :nth-child(1) > a.btn-detail > strong.title.ellipsis
+list = soup.select('#tabMyListWrap > div > div > ul > li')
+
+for favor in list:
+    s_tag = favor.select_one('a.btn-detail > strong.title.ellipsis')
+    if s_tag is not None:
+        list_title = s_tag.text
+        print(list_title)
 
 
+# musics = soup.select('#body-content > div.newest-list > div > table > tbody > tr')
+# rank = 1
+# for music in musics:
+#     a_tag = music.select_one('td.info > a')
+#     if a_tag is not None:
+#         title = a_tag.text
+#         singer = music.select_one('a.artist.ellipsis').text
+#
+#         doc = {
+#             'rank' : rank,
+#             'title' : title.strip(),
+#             'singer' : singer,
+#         }
+#         # db.music.delete_one(doc)
+#         db.music.insert_one(doc)
+#         rank += 1

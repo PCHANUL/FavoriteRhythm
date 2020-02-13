@@ -46,13 +46,16 @@ select = Select(driver.find_element_by_name('emailUrl'))
 select.select_by_visible_text('naver.com')
 # select.select_by_value()
 driver.find_element_by_css_selector('#btnSubmitSignin').click()
+driver.find_element_by_css_selector('#main > div > div.tab.storage_tab > div > ul > li:nth-child(2) > button.btn_tab_normal').click()
 
 
+print(driver)
 html = driver.page_source
 soup = BeautifulSoup(html, 'html.parser')
-print(soup)
-mylist = soup.select_one('#main > div > div.section_content_wrap > ul > li:nth-child(2) > div > div.badge_track_info > div.info_area > p > a #text')
-print(mylist)
+# print(soup)
+
+mylist = soup.select_one('#main > div > div.ct_chart > div.chart_lst > table > tbody > tr:nth-child(1) > td.info > div > div.txt_area > button > p > strong').text
+# print(mylist)
 
 
 

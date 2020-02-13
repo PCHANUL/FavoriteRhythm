@@ -54,7 +54,7 @@ mysong_btn = driver.find_element_by_css_selector('#content > div.clearfix > butt
 mysong_btn.click()
 
 src = driver.page_source
-print(src)                              #이 코드로 문제가 해결됨 이유는 모름
+# print(src)                              #이 코드로 문제가 해결됨 이유는 모름
 soup = BeautifulSoup(src)
 
 # print(soup)

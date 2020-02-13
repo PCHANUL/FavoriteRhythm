@@ -2,13 +2,23 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3657d7bc-6d7f-4352-919e-125c2f6207ff" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/Flo.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/FloMusic.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NaverMusic.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Practise.py" beforeDir="false" afterPath="$PROJECT_DIR$/Practise.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Practise.py" beforeDir="false" afterPath="$PROJECT_DIR$/GenieLogin.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -24,8 +34,8 @@
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
-  <component name="RunManager">
-    <configuration name="Practise" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="Python.Flo">
+    <configuration name="Flo" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="FavoriteRhythm" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -37,7 +47,49 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Practise.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Flo.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="FloMusic" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="FavoriteRhythm" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/FloMusic.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="GenieLogin" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="FavoriteRhythm" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/GenieLogin.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -48,7 +100,9 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.Practise" />
+        <item itemvalue="Python.Flo" />
+        <item itemvalue="Python.FloMusic" />
+        <item itemvalue="Python.GenieLogin" />
       </list>
     </recent_temporary>
   </component>
@@ -82,7 +136,14 @@
       <option name="project" value="LOCAL" />
       <updated>1581524486503</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="login">
+      <created>1581526841349</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1581526841349</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -90,26 +151,26 @@
     <option name="LAST_COMMIT_MESSAGE" value="login" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="570" y="55" key="CommitChangelistDialog2" timestamp="1581524486120">
+    <state x="570" y="55" key="CommitChangelistDialog2" timestamp="1581526841026">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state x="570" y="55" key="CommitChangelistDialog2/0.0.1440.900@0.0.1440.900" timestamp="1581524486120" />
-    <state width="1419" height="245" key="GridCell.Tab.0.bottom" timestamp="1581526800319">
+    <state x="570" y="55" key="CommitChangelistDialog2/0.0.1440.900@0.0.1440.900" timestamp="1581526841026" />
+    <state width="1419" height="245" key="GridCell.Tab.0.bottom" timestamp="1581599030694">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state width="1419" height="245" key="GridCell.Tab.0.bottom/0.0.1440.900@0.0.1440.900" timestamp="1581526800319" />
-    <state width="1419" height="245" key="GridCell.Tab.0.center" timestamp="1581526800316">
+    <state width="1419" height="245" key="GridCell.Tab.0.bottom/0.0.1440.900@0.0.1440.900" timestamp="1581599030694" />
+    <state width="1419" height="245" key="GridCell.Tab.0.center" timestamp="1581599030691">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state width="1419" height="245" key="GridCell.Tab.0.center/0.0.1440.900@0.0.1440.900" timestamp="1581526800316" />
-    <state width="1419" height="245" key="GridCell.Tab.0.left" timestamp="1581526800315">
+    <state width="1419" height="245" key="GridCell.Tab.0.center/0.0.1440.900@0.0.1440.900" timestamp="1581599030691" />
+    <state width="1419" height="245" key="GridCell.Tab.0.left" timestamp="1581599030690">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state width="1419" height="245" key="GridCell.Tab.0.left/0.0.1440.900@0.0.1440.900" timestamp="1581526800315" />
-    <state width="1419" height="245" key="GridCell.Tab.0.right" timestamp="1581526800317">
+    <state width="1419" height="245" key="GridCell.Tab.0.left/0.0.1440.900@0.0.1440.900" timestamp="1581599030690" />
+    <state width="1419" height="245" key="GridCell.Tab.0.right" timestamp="1581599030693">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state width="1419" height="245" key="GridCell.Tab.0.right/0.0.1440.900@0.0.1440.900" timestamp="1581526800317" />
+    <state width="1419" height="245" key="GridCell.Tab.0.right/0.0.1440.900@0.0.1440.900" timestamp="1581599030693" />
     <state width="1419" height="303" key="GridCell.Tab.1.bottom" timestamp="1581526431732">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
@@ -130,9 +191,9 @@
       <screen x="0" y="0" width="1440" height="900" />
     </state>
     <state x="443" y="89" key="SettingsEditor/0.0.1440.900@0.0.1440.900" timestamp="1581524464094" />
-    <state x="640" y="191" key="Vcs.Push.Dialog.v2" timestamp="1581524490546">
+    <state x="640" y="191" key="Vcs.Push.Dialog.v2" timestamp="1581599050573">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state x="640" y="191" key="Vcs.Push.Dialog.v2/0.0.1440.900@0.0.1440.900" timestamp="1581524490546" />
+    <state x="640" y="191" key="Vcs.Push.Dialog.v2/0.0.1440.900@0.0.1440.900" timestamp="1581599050573" />
   </component>
 </project>

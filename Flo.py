@@ -35,6 +35,7 @@ sample.send_keys('\n')
 driver.implicitly_wait(3)
 # 로그인
 id = 'cksdnfwkd'
+
 pwd = 'qkr95162'
 
 id_tag = driver.find_element_by_css_selector('#emailId')

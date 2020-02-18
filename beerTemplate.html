@@ -4,50 +4,132 @@
 	<title>오늘은 뭘 마실까?</title>
 
 	<!-- Required meta tags -->
-      <meta charset="utf-8">
-      <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    
-      <!-- Bootstrap CSS -->
-      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    
-      <!-- JS -->   
-      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-    
-      <!-- 구글폰트 -->
-      <link href="https://fonts.googleapis.com/css?family=Stylish&display=swap" rel="stylesheet">
-    
-      <!-- style -->
-      <style type="text/css">
-        * {
-          font-family: 'Stylish', sans-serif;
-        }
-        .wrap {
-          width: 900px;
-          margin: auto;
-        }
-        .comment {
-          color: blue;
-          font-weight: bold;
-        }
-        .form-post {
-          max-width: 500px;
-          padding: 2rem;
-          margin: 2rem auto;
-          border-color: #e9ecef;
-          border-radius: 0.3rem;
-          border: solid;
-          display: block;
-        }
-      </style>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+	<!-- Bootstrap CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+	<!-- JS -->   
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+	<!-- 구글폰트 -->
+	<link href="https://fonts.googleapis.com/css?family=Stylish&display=swap" rel="stylesheet">
+
+	<!-- style -->
+	<style type="text/css">
+		#sole{
+			display: none;
+		}
+		#pub{
+			display: none;
+		}
+		* {
+			font-family: 'Stylish', sans-serif;
+		}
+		.container {
+			width: 900px;
+			margin: 100px;
+		}
+		.col {
+			margin: 30px;
+		}
+		.form-post {
+			max-width: 500px;
+			padding: 2rem;
+			margin: 2rem auto;
+			border-color: #e9ecef;
+			border-radius: 0.3rem;
+			border: solid;
+			display: block;
+		}
+
+	</style>
+
+	<script type="text/javascript">
+		function openSole(){
+			// id 값 posting-box의 display 값이 block 이면
+			if ( $('#sole').css('display') == 'block' ) {
+			// posting-box를 가리고
+			$('#sole').hide();
+		} else {
+			// 아니면 posting-box를 펴라
+			$('#pub').hide();
+			$('#sole').show();
+		}
+	}
+	function openPub(){
+			// id 값 posting-box의 display 값이 block 이면
+			if ( $('#pub').css('display') == 'block' ) {
+			// posting-box를 가리고
+			$('#pub').hide();
+		} else {
+			// 아니면 posting-box를 펴라
+			$('#sole').hide();
+			$('#pub').show();
+		}
+	}
+</script>
+
+
 </head>
 <body>
+	<div class="container">
+		<div class="row">
+			<div class="col">
+				<button class="card" style="width: 18rem;" onclick = "openSole()" type="button">
+					<img src="https://img1.daumcdn.net/thumb/R720x0.q80/?scode=mtistory2&fname=http%3A%2F%2Fcfile21.uf.tistory.com%2Fimage%2F99B68333599E98A8354F50" class="card-img-top" alt="...">
+					<div class="card-body">
+						<p class="card-text">맥주는 편하게 집에서 마셔야지.</p>
+					</div>
+				</button>
+			</div>
+			<div class="col">
+				<div class="card" style="width: 18rem;" onclick = "openPub()">
+					<img src="https://inteng-storage.s3.amazonaws.com/img/iea/yrwQq25awN/sizes/healthy-beer-gut_resize_md.jpg" class="card-img-top" alt="...">
+					<div class="card-body">
+						<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+					</div>
+				</div>
+			</div>
+
+		</div>
+	</div>
+
+	<div id="sole" class="form-post">
+		<form>
+			<div class="form-group">
+				<h1>혼맥</h1>
+				<label for="exampleFormControlInput1">아티클 URL</label>
+				<input id="posting-url" class="form-control" placeholder="">
+			</div>
+			<div class="form-group">
+				<label for="exampleFormControlTextarea1">간단 코멘트</label>
+				<input id="posting-comment" class="form-control" placeholder="">
+			</div>
+			<button onclick="posting()" type="button" class="btn btn-primary">기사저장</button>
+		</form>
+	</div>
+
+	<div id="pub" class="form-post">
+		<form>
+			<div class="form-group">
+				<h1>브루펍</h1>
+				<label for="exampleFormControlInput1">아티클 URL</label>
+				<input id="posting-url" class="form-control" placeholder="">
+			</div>
+			<div class="form-group">
+				<label for="exampleFormControlTextarea1">간단 코멘트</label>
+				<input id="posting-comment" class="form-control" placeholder="">
+			</div>
+			<button onclick="posting()" type="button" class="btn btn-primary">기사저장</button>
+		</form>
+	</div>
 
 
 
-
-	
 
 </body>
 </html>

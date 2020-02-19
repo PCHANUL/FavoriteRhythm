@@ -5,7 +5,89 @@
 
 	<!-- Required meta tags -->
 	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	
+	
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+	<title>간단한 지도 표시하기</title>
+	<script type="text/javascript" src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=0zrhjp5wun"></script>
+
+
+
+
+
+	<!-- 구글맵 -->
+	<!-- <meta name="veiwport" content="initial-scale=1.0, user-scalable=no">
+	<meta charset="euc-kr">
+	<script type="https://maps.googleapis.com/maps/api/js?sensor=false"></script>
+	<script>
+		function initialize(){
+
+			// 좌표값
+			var Y_point = 35.87110100714382;
+			var X_point = 128.60169690333005;
+
+			// 지도의 확대 레벨:숫자가 클수록 확대됨
+			var zoomLevel = 16;
+			// 현재 위치마커에 마우스를 올렸을때 나타나는 정보
+			var markerTitle = "",
+			// 마커를 클릭했을때 나타나는 말풍선의 최대크기
+			var markerMaxWidth = 300;
+			// 말품선의 내용
+			var contentString = '<div>\
+			<h2>위즈 소프트</h2>\
+			<a href="http://www.daegu.go.kr"target="_blank">http://www.daegu.go.kr</a>\
+			</div>';
+			var myLatlng = new google.maps.LatLng(Y_point, X_point);
+			var mapOptions = {
+				zoom: zoomlevel,
+				center: myLatlng,
+				mapTypeld: google.maps.MapTypeld.ROADMAP
+			}
+			var map = new google.maps.Map(document.getElementByld('map_view').mapOptions);
+			var marker = new google.maps.Marker({
+				position: myLatlng,
+				map: map,
+				title: markerTitle
+			});
+			var infowindow = new google.mpas.InfoWindow({
+				content: contentString,
+				maxWidth: markerMaxWidth
+			});
+			google.maps.event.addListener(marker, 'click', function(){
+				infowindow.open(map, marker);
+			})
+		}
+	</script> -->
+
+	<!-- 구글 -->
+	<!-- // 지도키. 해외에서 공개된 키라고합니다.
+	// 그냥써도 무방하지만 자신의 키가 있다면 넣어주세요. (key=키값)
+	// 한글지도의 경우 language=en을 language=ko 로 바꿔주시면 됩니다. -->
+	<!-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBwlNqAEil52XRPHmSVb4Luk18qQG9GqcM&sensor=false&language=en"></script>  -->
+	<!-- 
+	// 37.2915450, 127.0430790 을 지우고 메모해두었던 좌표를 넣습니다.
+	// 예) new google.maps.LatLng(좌표, 좌표) -->
+	<!-- <script> 
+		function initialize() { 
+			var myLatlng = new google.maps.LatLng(37.2915450, 127.0430790); // 좌표값
+			var mapOptions = { 
+        			zoom: 14, // 지도 확대레벨 조정
+        			center: myLatlng, 
+        			mapTypeId: google.maps.MapTypeId.ROADMAP 
+    		} 
+    		var map = new google.maps.Map(document.getElementById('map_canvas'), mapOptions); 
+    		var marker = new google.maps.Marker({ 
+    				position: myLatlng, 
+    				map: map, 
+					title: "회사명" // 마커에 마우스를 올렸을때 간략하게 표기될 설명글
+			}); 
+		} 
+		window.onload = initialize;
+	</script> -->
+
+
+
 
 	<!-- Bootstrap CSS -->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
@@ -31,7 +113,7 @@
 		}
 		.container {
 			width: 900px;
-			margin: 100px;
+			margin: auto;
 		}
 		.col {
 			margin: 30px;
@@ -127,9 +209,16 @@
 			<button onclick="posting()" type="button" class="btn btn-primary">기사저장</button>
 		</form>
 	</div>
+	
 
 
 
+	<div id="map_canvas" style="width:100%; height:400px; margin:0px;"></div>
+
+
+	
+
+	
 
 </body>
 </html>

@@ -8,84 +8,12 @@
 	
 	
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
-	<title>간단한 지도 표시하기</title>
-	<script type="text/javascript" src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=0zrhjp5wun"></script>
-
-
-
-
 
 	<!-- 구글맵 -->
-	<!-- <meta name="veiwport" content="initial-scale=1.0, user-scalable=no">
-	<meta charset="euc-kr">
-	<script type="https://maps.googleapis.com/maps/api/js?sensor=false"></script>
-	<script>
-		function initialize(){
+	<meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+	<meta charset="utf-8">
 
-			// 좌표값
-			var Y_point = 35.87110100714382;
-			var X_point = 128.60169690333005;
-
-			// 지도의 확대 레벨:숫자가 클수록 확대됨
-			var zoomLevel = 16;
-			// 현재 위치마커에 마우스를 올렸을때 나타나는 정보
-			var markerTitle = "",
-			// 마커를 클릭했을때 나타나는 말풍선의 최대크기
-			var markerMaxWidth = 300;
-			// 말품선의 내용
-			var contentString = '<div>\
-			<h2>위즈 소프트</h2>\
-			<a href="http://www.daegu.go.kr"target="_blank">http://www.daegu.go.kr</a>\
-			</div>';
-			var myLatlng = new google.maps.LatLng(Y_point, X_point);
-			var mapOptions = {
-				zoom: zoomlevel,
-				center: myLatlng,
-				mapTypeld: google.maps.MapTypeld.ROADMAP
-			}
-			var map = new google.maps.Map(document.getElementByld('map_view').mapOptions);
-			var marker = new google.maps.Marker({
-				position: myLatlng,
-				map: map,
-				title: markerTitle
-			});
-			var infowindow = new google.mpas.InfoWindow({
-				content: contentString,
-				maxWidth: markerMaxWidth
-			});
-			google.maps.event.addListener(marker, 'click', function(){
-				infowindow.open(map, marker);
-			})
-		}
-	</script> -->
-
-	<!-- 구글 -->
-	<!-- // 지도키. 해외에서 공개된 키라고합니다.
-	// 그냥써도 무방하지만 자신의 키가 있다면 넣어주세요. (key=키값)
-	// 한글지도의 경우 language=en을 language=ko 로 바꿔주시면 됩니다. -->
-	<!-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBwlNqAEil52XRPHmSVb4Luk18qQG9GqcM&sensor=false&language=en"></script>  -->
-	<!-- 
-	// 37.2915450, 127.0430790 을 지우고 메모해두었던 좌표를 넣습니다.
-	// 예) new google.maps.LatLng(좌표, 좌표) -->
-	<!-- <script> 
-		function initialize() { 
-			var myLatlng = new google.maps.LatLng(37.2915450, 127.0430790); // 좌표값
-			var mapOptions = { 
-        			zoom: 14, // 지도 확대레벨 조정
-        			center: myLatlng, 
-        			mapTypeId: google.maps.MapTypeId.ROADMAP 
-    		} 
-    		var map = new google.maps.Map(document.getElementById('map_canvas'), mapOptions); 
-    		var marker = new google.maps.Marker({ 
-    				position: myLatlng, 
-    				map: map, 
-					title: "회사명" // 마커에 마우스를 올렸을때 간략하게 표기될 설명글
-			}); 
-		} 
-		window.onload = initialize;
-	</script> -->
-
+	
 
 
 
@@ -102,6 +30,9 @@
 
 	<!-- style -->
 	<style type="text/css">
+		#map{
+			display: none;
+		}
 		#sole{
 			display: none;
 		}
@@ -112,11 +43,11 @@
 			font-family: 'Stylish', sans-serif;
 		}
 		.container {
-			width: 900px;
+			
 			margin: auto;
 		}
 		.col {
-			margin: 30px;
+			margin: 5px;
 		}
 		.form-post {
 			max-width: 500px;
@@ -128,29 +59,41 @@
 			display: block;
 		}
 
-	</style>
+		 /* Always set the map height explicitly to define the size of the div
+		 * element that contains the map. */
+		 #map {
+		 	height: 400px;
+		 }
+		 /* Optional: Makes the sample page fill the window. */
+		 html, body {
+		 	height: 100%;
+		 	margin: 0;
+		 	padding: 0;
+		 }
 
-	<script type="text/javascript">
-		function openSole(){
+		</style>
+
+		<script type="text/javascript">
+			function openSole(){
 			// id 값 posting-box의 display 값이 block 이면
 			if ( $('#sole').css('display') == 'block' ) {
 			// posting-box를 가리고
 			$('#sole').hide();
 		} else {
 			// 아니면 posting-box를 펴라
-			$('#pub').hide();
+			$('#map').hide();
 			$('#sole').show();
 		}
 	}
 	function openPub(){
 			// id 값 posting-box의 display 값이 block 이면
-			if ( $('#pub').css('display') == 'block' ) {
+			if ( $('#map').css('display') == 'block' ) {
 			// posting-box를 가리고
-			$('#pub').hide();
+			$('#map').hide();
 		} else {
 			// 아니면 posting-box를 펴라
 			$('#sole').hide();
-			$('#pub').show();
+			$('#map').show();
 		}
 	}
 </script>
@@ -213,7 +156,146 @@
 
 
 
-	<div id="map_canvas" style="width:100%; height:400px; margin:0px;"></div>
+	<div id="map"></div>
+
+	<script>
+
+
+		var center = {lat:37.561045, lng:126.990779};
+		
+
+		// var locations = [
+		// ['서울집시', 37.575010, 126.991526],
+		// ['미켈러 바', 37.520847, 127.023911],
+		// ['어메이징브루잉', 37.542743, 127.049499],
+		// ['맥파이 이태원점', 37.539391, 126.987461],
+		// ['더부스', 37.539315, 126.987715],
+		// ['캘리 키친', 37.539507, 126.991678],
+		// ['더 테이블', 37.569774, 126.984343],
+		// ['브루3.15', 37.574575, 126.989854],
+		// ['아트몬스터 익선동점', 37.573586, 126.990448],
+		// ['미스터리브루잉컴퍼니', 37.543874, 126.947681],
+		// ['서울비어프로젝트', 37.567199, 126.989812],
+		// ['가로수브루잉컴퍼니', 37.519422, 127.022016],
+		// ['밴드오브브루어스', 37.503767, 127.052760],
+		// ['보리마루탭하우스', 37.576350, 126.973776],
+		// ['합스카치광화문', 37.578771, 126.972950],
+
+		// ];
+
+
+
+		
+		
+		function initMap(){
+			var locations = {lat: 37.575010, lng:126.991526};
+
+			var map = new google.maps.Map(document.getElementById('map'), {
+				center: {lat: 37.556356, lng: 126.987427},
+				zoom: 12
+			});
+
+			// 마크찍기
+			var marker = new google.maps.Marker({
+				position: locations,
+				map: map,
+				title: 'Hello world!'
+			});
+
+
+			//마크 클릭포커싱
+			// map.addListener('center_changed', function(){
+			// 	//3초후에 센터가 바뀌며 포커싱됨
+			// 	window.setTimeout(function(){
+			// 		map.panTo(marker.getPosition());
+			// 	}, 3000);
+			// });
+			marker.addListener('click', function(){
+				map.setZoom(17);
+				map.setCenter(marker.getPosition());
+			});
+
+
+			
+
+
+
+			
+
+			var infoWindow = new google.maps.InfoWindow;
+			// Try HTML5 geolocation.
+			if (navigator.geolocation){
+				navigator.geolocation.getCurrentPosition(function(position){
+					var pos = {
+						lat: position.coords.latitude,
+						lng: position.coords.longitude
+					};
+
+					infoWindow.setPosition(pos);
+					infoWindow.setContent('지금여기');
+					infoWindow.open(map);
+					map.setCenter(pos);
+				}, function(){
+					handleLocationError(true, infoWindow, map.getCenter());
+
+				});
+			} else {
+				// Browser doesn't support Geolocation
+				handleLocationError(false, infoWindow, map.getCenter());
+			}
+
+			var centerControlDiv = document.createElement('div');
+			var centerControl = new CenterControl(centerControlDiv, map);
+			centerControlDiv.index = 1;
+			map.controls[google.maps.ControlPosition.TOP_CENTER].push(centerControlDiv);
+		}
+
+		function handleLocationError(browserHasGeolocation, infoWindow, pos) {
+			infoWindow.setPosition(pos);
+			infoWindow.setContent(browserHasGeolocation ?
+				'Error: The Geolocation service failed.' :
+				'Error: Your browser doesn\'t support geolacation.');
+			infoWindow.open(map);
+		}
+
+		function CenterControl(controlDiv, map, pos){
+			// Set CSS for the control border.
+			var controlUI = document.createElement('div');
+			controlUI.style.backgroundColor = '#fff';
+			controlUI.style.border = '2px solid #fff';
+			controlUI.style.borderRadius = '3px';
+			controlUI.style.boxShadow = '0 2px 6px rgba(0,0,0,.3)';
+			controlUI.style.cursor = 'pointer';
+			controlUI.style.marginBottom = '22px';
+			controlUI.style.textAlign = 'center';
+			controlUI.title = 'Click to recenter the map';
+			controlDiv.appendChild(controlUI);
+
+        	// Set CSS for the control interior.
+        	var controlText = document.createElement('div');
+        	controlText.style.color = 'rgb(25,25,25)';
+        	controlText.style.fontFamily = 'Roboto,Arial,sans-serif';
+        	controlText.style.fontSize = '16px';
+        	controlText.style.lineHeight = '38px';
+        	controlText.style.paddingLeft = '5px';
+        	controlText.style.paddingRight = '5px';
+        	controlText.innerHTML = 'Center Map';
+        	controlUI.appendChild(controlText);
+
+        	// Setup the click event listeners: simply set the map to Chicago.
+
+        	controlUI.addEventListener('click', function(position) {
+        		map.setCenter(center);
+        	});
+        }
+
+	</script>
+
+	<!-- 구글맵 api키인증 -->
+	<script async defer
+	src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA904jSCpmX86cFJNW68f15DSUziqpOYeI&callback=initMap"
+	async defer></script>
+
 
 
 	

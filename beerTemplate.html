@@ -23,11 +23,11 @@
 
 			$('#btn1').click(function(){
 
-				var offset = $('#div1').offset(); //선택한 태그의 위치를 반환
+				var offset = $('#map').offset(); //선택한 태그의 위치를 반환
 
 	                //animate()메서드를 이용해서 선택한 태그의 스크롤 위치를 지정해서 0.4초 동안 부드럽게 해당 위치로 이동함 
 
-		        $('html').animate({scrollTop : offset.top}, 400);
+		        $('html').animate({scrollTop : offset.top}, 1200);
 
 			});
 
@@ -67,11 +67,12 @@
 		}
 		.container {
 			
-			margin: 200px;
+			margin-top: 90px;
+			margin-bottom: 90px;
 		}
-		.col {
-			margin: 50px;
-		}
+		/*.row {
+			margin-top: 300px;
+		}*/
 		.form-post {
 			max-width: 500px;
 			padding: 2rem;
@@ -86,6 +87,7 @@
 		 * element that contains the map. */
 		 #map {
 		 	height: 400px;
+		 	margin-top: 50px;
 		 }
 		 /* Optional: Makes the sample page fill the window. */
 		 html, body {
@@ -129,22 +131,12 @@
 <body>
 	<div class="container">
 		<div class="row">
-			<div class="col">
-				<button id="div1" class="card" style="width: 18rem;" onclick = "openSole()" type="button">
-					<img src="https://img1.daumcdn.net/thumb/R720x0.q80/?scode=mtistory2&fname=http%3A%2F%2Fcfile21.uf.tistory.com%2Fimage%2F99B68333599E98A8354F50" class="card-img-top" alt="...">
-					<div class="card-body">
-						<p class="card-text">편하게 집에서 즐겨보아요. </p>
-					</div>
-				</button>
-			</div>
-			<div class="col">
-				<button class="card" style="width: 18rem;" onclick = "openPub()">
-					<img src="https://inteng-storage.s3.amazonaws.com/img/iea/yrwQq25awN/sizes/healthy-beer-gut_resize_md.jpg" class="card-img-top" alt="...">
-					<div class="card-body">
-						<p class="card-text">펍에서 맥주를 즐겨보아요.</p>
-					</div>
-				</button>
-			</div>
+			
+				
+					<img button id="btn1" onclick = "openPub()" src="brewpub.jpg" width=50% height=70% >
+					<img onclick = "openSole()" src="bottleshop.png" width=50% height=70% >
+			
+			
 
 		</div>
 	</div>
@@ -155,7 +147,9 @@
 
 
 
-	<div id="map"></div>
+	<div id="map" class="map">
+		<a href="">BREWPUB</a>
+	</div>
 
 	<script type="text/javascript">
 

@@ -7,11 +7,11 @@
 	<meta charset="utf-8">
 	
 	
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
 
 	<!-- 구글맵 -->
 	<meta name="viewport" content="initial-scale=1.0, user-scalable=no">
-	<meta charset="utf-8">
+	
 
 	
 
@@ -82,6 +82,7 @@
 		} else {
 			// 아니면 posting-box를 펴라
 			$('#map').hide();
+			$('#pub').hide();
 			$('#sole').show();
 		}
 	}
@@ -94,6 +95,7 @@
 			// 아니면 posting-box를 펴라
 			$('#sole').hide();
 			$('#map').show();
+			$('#pub').show();		
 		}
 	}
 </script>
@@ -107,17 +109,17 @@
 				<button class="card" style="width: 18rem;" onclick = "openSole()" type="button">
 					<img src="https://img1.daumcdn.net/thumb/R720x0.q80/?scode=mtistory2&fname=http%3A%2F%2Fcfile21.uf.tistory.com%2Fimage%2F99B68333599E98A8354F50" class="card-img-top" alt="...">
 					<div class="card-body">
-						<p class="card-text">맥주는 편하게 집에서 마셔야지.</p>
+						<p class="card-text">편하게 집에서 즐겨보아요. </p>
 					</div>
 				</button>
 			</div>
 			<div class="col">
-				<div class="card" style="width: 18rem;" onclick = "openPub()">
+				<button class="card" style="width: 18rem;" onclick = "openPub()">
 					<img src="https://inteng-storage.s3.amazonaws.com/img/iea/yrwQq25awN/sizes/healthy-beer-gut_resize_md.jpg" class="card-img-top" alt="...">
 					<div class="card-body">
-						<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+						<p class="card-text">펍에서 맥주를 즐겨보아요.</p>
 					</div>
-				</div>
+				</button>
 			</div>
 
 		</div>
@@ -138,117 +140,179 @@
 		</form>
 	</div>
 
-	<div id="pub" class="form-post">
-		<form>
-			<div class="form-group">
-				<h1>브루펍</h1>
-				<label for="exampleFormControlInput1">아티클 URL</label>
-				<input id="posting-url" class="form-control" placeholder="">
-			</div>
-			<div class="form-group">
-				<label for="exampleFormControlTextarea1">간단 코멘트</label>
-				<input id="posting-comment" class="form-control" placeholder="">
-			</div>
-			<button onclick="posting()" type="button" class="btn btn-primary">기사저장</button>
-		</form>
-	</div>
 	
 
 
 
 	<div id="map"></div>
 
-	<script>
+	<script type="text/javascript">
 
 
 		var center = {lat:37.561045, lng:126.990779};
 		
 
-		// var locations = [
-		// ['서울집시', 37.575010, 126.991526],
-		// ['미켈러 바', 37.520847, 127.023911],
-		// ['어메이징브루잉', 37.542743, 127.049499],
-		// ['맥파이 이태원점', 37.539391, 126.987461],
-		// ['더부스', 37.539315, 126.987715],
-		// ['캘리 키친', 37.539507, 126.991678],
-		// ['더 테이블', 37.569774, 126.984343],
-		// ['브루3.15', 37.574575, 126.989854],
-		// ['아트몬스터 익선동점', 37.573586, 126.990448],
-		// ['미스터리브루잉컴퍼니', 37.543874, 126.947681],
-		// ['서울비어프로젝트', 37.567199, 126.989812],
-		// ['가로수브루잉컴퍼니', 37.519422, 127.022016],
-		// ['밴드오브브루어스', 37.503767, 127.052760],
-		// ['보리마루탭하우스', 37.576350, 126.973776],
-		// ['합스카치광화문', 37.578771, 126.972950],
+		var locations = [
+			['서울집시', 37.575010, 126.991526],
+			['미켈러 바', 37.520847, 127.023911],
+			['어메이징브루잉', 37.542743, 127.049499],
+			['맥파이 이태원점', 37.539391, 126.987461],
+			['더부스', 37.539315, 126.987715],
+			['캘리 키친', 37.539507, 126.991678],
+			['더 테이블', 37.569774, 126.984343],
+			['브루3.15', 37.574575, 126.989854],
+			['아트몬스터 익선동점', 37.573586, 126.990448],
+			['미스터리브루잉컴퍼니', 37.543874, 126.947681],
+			['서울비어프로젝트', 37.567199, 126.989812],
+			['가로수브루잉컴퍼니', 37.519422, 127.022016],
+			['밴드오브브루어스', 37.503767, 127.052760],
+			['보리마루탭하우스', 37.576350, 126.973776],
+			['합스카치광화문', 37.578771, 126.972950],
 
-		// ];
+		];
 
+		// var cities = {
+		// 	type: 'FeatureCollection',
+		// 	features: [{
+		// 		type: 'Feature',
+		// 		geometry: {type: 'Point', coordinates: [37.575010, 126.991526]},
+		// 		properties: {name: 'Chicago'}
+		// 	}, {
+		// 		type: 'Feature',
+		// 		geometry: {type: 'Point', coordinates: [37.520847, 127.023911]},
+		// 		properties: {name: 'Anchorage'}
+		// 	}]
+		// };
+		// 		type: 'Feature',
+		// 		geometry: {type: 'Point', coordinates: [-99.127, 19.427]},
+		// 		properties: {name: 'Mexico City'}
+		// 	}, {
+		// 		type: 'Feature',
+		// 		geometry: {type: 'Point', coordinates: [-0.126, 51.500]},
+		// 		properties: {name: 'London'}
+		// 	}, {
+		// 		type: 'Feature',
+		// 		geometry: {type: 'Point', coordinates: [28.045, -26.201]},
+		// 		properties: {name: 'Johannesburg'}
+		// 	}, {
+		// 		type: 'Feature',
+		// 		geometry: {type: 'Point', coordinates: [15.322, -4.325]},
+		// 		properties: {name: 'Kinshasa'}
+		// 	}, {
+		// 		type: 'Feature',
+		// 		geometry: {type: 'Point', coordinates: [151.207, -33.867]},
+		// 		properties: {name: 'Sydney'}
+		// 	}, {
+		// 		type: 'Feature',
+		// 		geometry: {type: 'Point', coordinates: [0, 0]},
+		// 		properties: {name: '0°N 0°E'}
+		// 	}]
+		// };
+
+		
+		
 
 
 		
 		
 		function initMap(){
-			var locations = {lat: 37.575010, lng:126.991526};
+			
+		
 
 			var map = new google.maps.Map(document.getElementById('map'), {
-				center: {lat: 37.556356, lng: 126.987427},
-				zoom: 12
+				center: new google.maps.LatLng(37.556356, 126.987427),
+				zoom: 12,
+				mapTypeId: google.maps.MapTypeId.ROADMAP
 			});
 
-			// 마크찍기
-			var marker = new google.maps.Marker({
-				position: locations,
-				map: map,
-				title: 'Hello world!'
-			});
+			var infowindow = new google.maps.InfoWindow();
 
-
-			//마크 클릭포커싱
-			// map.addListener('center_changed', function(){
-			// 	//3초후에 센터가 바뀌며 포커싱됨
-			// 	window.setTimeout(function(){
-			// 		map.panTo(marker.getPosition());
-			// 	}, 3000);
-			// });
-			marker.addListener('click', function(){
-				map.setZoom(17);
-				map.setCenter(marker.getPosition());
-			});
-
-
+			var marker, i;
 			
-
-
-
-			
-
-			var infoWindow = new google.maps.InfoWindow;
-			// Try HTML5 geolocation.
-			if (navigator.geolocation){
-				navigator.geolocation.getCurrentPosition(function(position){
-					var pos = {
-						lat: position.coords.latitude,
-						lng: position.coords.longitude
-					};
-
-					infoWindow.setPosition(pos);
-					infoWindow.setContent('지금여기');
-					infoWindow.open(map);
-					map.setCenter(pos);
-				}, function(){
-					handleLocationError(true, infoWindow, map.getCenter());
-
+			for (i = 0; i < locations.length; i++){
+				marker = new google.maps.Marker({
+					id: i,
+					position: new google.maps.LatLng(locations[i][1], locations[i][2]),
+					map: map
 				});
-			} else {
-				// Browser doesn't support Geolocation
-				handleLocationError(false, infoWindow, map.getCenter());
+
+				google.maps.event.addListener(marker, 'click', (function(marker, i){
+					return function(){
+						infowindow.setContent(locations[i][0]);
+						infowindow.open(map, marker);
+					}
+				})(marker, i));
+				if(marker)
+				{
+					marker.addListener('click', function(){
+						map.setZoom(15);
+						map.setCenter(this.getPosition());
+					});
+				}
 			}
+	
+
+
+			geocoder = new google.maps.Geocoder();
+			if(navigator.geolocation){
+				var gps = navigator.geolocation;
+				gps.getCurrentPosition(function(pos){
+					var latLng = new google.maps.LatLng(pos.coords.latitude, pos.coords.longitude);
+					var opts = {
+						zoom: 16,
+						center: latLng,
+						mapTypeId : google.maps.MapTypeId.ROADMAP
+					};
+					map = new google.maps.Map($("map_canvas"), opts);
+					viewMarker();
+					showLocation(pos);
+					trackerId = gps.getCurrentPosition(function(pos) {
+						var latlng = new google.maps.LatLng(pos.coords.latitude, pos.coords.longitude);
+						map.setCenter(latLng);
+							theUser.setPosition(latLng);
+							showLocation(pos);
+
+					});
+				});
+			}
+
+
+			// Try HTML5 geolocation.
+			// if (navigator.geolocation){
+			// 	navigator.geolocation.getCurrentPosition(function(position){
+			// 		var pos = {
+			// 			lat: position.coords.latitude,
+			// 			lng: position.coords.longitude
+			// 		};
+
+			// 		map.setPosition(pos);
+			// 		infoWindow.setContent('지금여기');
+			// 		infoWindow.open(map);
+			// 		map.setCenter(pos);
+			// 	}, function(){
+			// 		handleLocationError(true, infoWindow, map.getCenter());
+
+			// 	});
+			// } else {
+			// 	// Browser doesn't support Geolocation
+			// 	handleLocationError(false, infoWindow, map.getCenter());
+			// }
+
+
+
+
 
 			var centerControlDiv = document.createElement('div');
 			var centerControl = new CenterControl(centerControlDiv, map);
 			centerControlDiv.index = 1;
 			map.controls[google.maps.ControlPosition.TOP_CENTER].push(centerControlDiv);
 		}
+
+
+
+
+
+
 
 		function handleLocationError(browserHasGeolocation, infoWindow, pos) {
 			infoWindow.setPosition(pos);
@@ -285,22 +349,37 @@
         	// Setup the click event listeners: simply set the map to Chicago.
 
         	controlUI.addEventListener('click', function(position) {
+        		map.setZoom(12);
         		map.setCenter(center);
         	});
         }
 
-	</script>
+    </script>
 
-	<!-- 구글맵 api키인증 -->
-	<script async defer
-	src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA904jSCpmX86cFJNW68f15DSUziqpOYeI&callback=initMap"
-	async defer></script>
+    <!-- 구글맵 api키인증 -->
+    <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA904jSCpmX86cFJNW68f15DSUziqpOYeI&callback=initMap"
+    async defer></script>
+
+    <div id="pub" class="form-post">
+    	<form>
+    		<div class="form-group">
+    			<h1>브루펍</h1>
+    			<label for="exampleFormControlInput1">아티클 URL</label>
+    			<input id="posting-url" class="form-control" placeholder="">
+    		</div>
+    		<div class="form-group">
+    			<label for="exampleFormControlTextarea1">간단 코멘트</label>
+    			<input id="posting-comment" class="form-control" placeholder="">
+    		</div>
+    		<button onclick="posting()" type="button" class="btn btn-primary">기사저장</button>
+    	</form>
+    </div>
 
 
 
-	
 
-	
+
 
 </body>
 </html>

@@ -14,6 +14,29 @@
 	
 
 	
+	<!-- 링크스크롤 -->
+	<script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
+
+	<script>
+
+		$(document).ready(function(){
+
+			$('#btn1').click(function(){
+
+				var offset = $('#div1').offset(); //선택한 태그의 위치를 반환
+
+	                //animate()메서드를 이용해서 선택한 태그의 스크롤 위치를 지정해서 0.4초 동안 부드럽게 해당 위치로 이동함 
+
+		        $('html').animate({scrollTop : offset.top}, 400);
+
+			});
+
+		});
+
+	</script>
+
+
+
 
 
 
@@ -44,10 +67,10 @@
 		}
 		.container {
 			
-			margin: auto;
+			margin: 200px;
 		}
 		.col {
-			margin: 5px;
+			margin: 50px;
 		}
 		.form-post {
 			max-width: 500px;
@@ -91,6 +114,7 @@
 			if ( $('#map').css('display') == 'block' ) {
 			// posting-box를 가리고
 			$('#map').hide();
+			$('#pub').hide();
 		} else {
 			// 아니면 posting-box를 펴라
 			$('#sole').hide();
@@ -106,7 +130,7 @@
 	<div class="container">
 		<div class="row">
 			<div class="col">
-				<button class="card" style="width: 18rem;" onclick = "openSole()" type="button">
+				<button id="div1" class="card" style="width: 18rem;" onclick = "openSole()" type="button">
 					<img src="https://img1.daumcdn.net/thumb/R720x0.q80/?scode=mtistory2&fname=http%3A%2F%2Fcfile21.uf.tistory.com%2Fimage%2F99B68333599E98A8354F50" class="card-img-top" alt="...">
 					<div class="card-body">
 						<p class="card-text">편하게 집에서 즐겨보아요. </p>
@@ -125,20 +149,7 @@
 		</div>
 	</div>
 
-	<div id="sole" class="form-post">
-		<form>
-			<div class="form-group">
-				<h1>혼맥</h1>
-				<label for="exampleFormControlInput1">아티클 URL</label>
-				<input id="posting-url" class="form-control" placeholder="">
-			</div>
-			<div class="form-group">
-				<label for="exampleFormControlTextarea1">간단 코멘트</label>
-				<input id="posting-comment" class="form-control" placeholder="">
-			</div>
-			<button onclick="posting()" type="button" class="btn btn-primary">기사저장</button>
-		</form>
-	</div>
+	
 
 	
 
@@ -170,50 +181,29 @@
 			['합스카치광화문', 37.578771, 126.972950],
 
 		];
-
-		// var cities = {
-		// 	type: 'FeatureCollection',
-		// 	features: [{
-		// 		type: 'Feature',
-		// 		geometry: {type: 'Point', coordinates: [37.575010, 126.991526]},
-		// 		properties: {name: 'Chicago'}
-		// 	}, {
-		// 		type: 'Feature',
-		// 		geometry: {type: 'Point', coordinates: [37.520847, 127.023911]},
-		// 		properties: {name: 'Anchorage'}
-		// 	}]
-		// };
-		// 		type: 'Feature',
-		// 		geometry: {type: 'Point', coordinates: [-99.127, 19.427]},
-		// 		properties: {name: 'Mexico City'}
-		// 	}, {
-		// 		type: 'Feature',
-		// 		geometry: {type: 'Point', coordinates: [-0.126, 51.500]},
-		// 		properties: {name: 'London'}
-		// 	}, {
-		// 		type: 'Feature',
-		// 		geometry: {type: 'Point', coordinates: [28.045, -26.201]},
-		// 		properties: {name: 'Johannesburg'}
-		// 	}, {
-		// 		type: 'Feature',
-		// 		geometry: {type: 'Point', coordinates: [15.322, -4.325]},
-		// 		properties: {name: 'Kinshasa'}
-		// 	}, {
-		// 		type: 'Feature',
-		// 		geometry: {type: 'Point', coordinates: [151.207, -33.867]},
-		// 		properties: {name: 'Sydney'}
-		// 	}, {
-		// 		type: 'Feature',
-		// 		geometry: {type: 'Point', coordinates: [0, 0]},
-		// 		properties: {name: '0°N 0°E'}
-		// 	}]
-		// };
-
 		
-		
+		var contentString = '<div id="content" onclick="openPub">'+
+            '<div id="siteNotice">'+
+            '</div>'+
+            '<h1 id="firstHeading" class="firstHeading">Uluru</h1>'+
+            '<div id="bodyContent">'+
+            '<p><b>Uluru</b>, also referred to as <b>Ayers Rock</b>, is a large ' +
+            'sandstone rock formation in the southern part of the '+
+            'Northern Territory, central Australia. It lies 335&#160;km (208&#160;mi) '+
+            'south west of the nearest large town, Alice Springs; 450&#160;km '+
+            '(280&#160;mi) by road. Kata Tjuta and Uluru are the two major '+
+            'features of the Uluru - Kata Tjuta National Park. Uluru is '+
+            'sacred to the Pitjantjatjara and Yankunytjatjara, the '+
+            'Aboriginal people of the area. It has many springs, waterholes, '+
+            'rock caves and ancient paintings. Uluru is listed as a World '+
+            'Heritage Site.</p>'+
+            '<p>Attribution: Uluru, <button id="btn1">'+
+            'https://en.wikipedia.org/w/index.php?title=Uluru</button> '+
+            '(last visited June 22, 2009), onclick()="openPub".</p>'+
+            '</div>'+
+            '</div>';
 
 
-		
 		
 		function initMap(){
 			
@@ -225,7 +215,9 @@
 				mapTypeId: google.maps.MapTypeId.ROADMAP
 			});
 
-			var infowindow = new google.maps.InfoWindow();
+			var infowindow = new google.maps.InfoWindow({
+				content: contentString
+			});
 
 			var marker, i;
 			
@@ -234,11 +226,13 @@
 					id: i,
 					position: new google.maps.LatLng(locations[i][1], locations[i][2]),
 					map: map
+
+
 				});
 
 				google.maps.event.addListener(marker, 'click', (function(marker, i){
 					return function(){
-						infowindow.setContent(locations[i][0]);
+						// infowindow.setContent(locations[i][0]);
 						infowindow.open(map, marker);
 					}
 				})(marker, i));
@@ -253,28 +247,28 @@
 	
 
 
-			geocoder = new google.maps.Geocoder();
-			if(navigator.geolocation){
-				var gps = navigator.geolocation;
-				gps.getCurrentPosition(function(pos){
-					var latLng = new google.maps.LatLng(pos.coords.latitude, pos.coords.longitude);
-					var opts = {
-						zoom: 16,
-						center: latLng,
-						mapTypeId : google.maps.MapTypeId.ROADMAP
-					};
-					map = new google.maps.Map($("map_canvas"), opts);
-					viewMarker();
-					showLocation(pos);
-					trackerId = gps.getCurrentPosition(function(pos) {
-						var latlng = new google.maps.LatLng(pos.coords.latitude, pos.coords.longitude);
-						map.setCenter(latLng);
-							theUser.setPosition(latLng);
-							showLocation(pos);
+			// geocoder = new google.maps.Geocoder();
+			// if(navigator.geolocation){
+			// 	var gps = navigator.geolocation;
+			// 	gps.getCurrentPosition(function(pos){
+			// 		var latLng = new google.maps.LatLng(pos.coords.latitude, pos.coords.longitude);
+			// 		var opts = {
+			// 			zoom: 16,
+			// 			center: latLng,
+			// 			mapTypeId : google.maps.MapTypeId.ROADMAP
+			// 		};
+			// 		map = new google.maps.Map($("map_canvas"), opts);
+			// 		viewMarker();
+			// 		showLocation(pos);
+			// 		trackerId = gps.getCurrentPosition(function(pos) {
+			// 			var latlng = new google.maps.LatLng(pos.coords.latitude, pos.coords.longitude);
+			// 			map.setCenter(latLng);
+			// 				theUser.setPosition(latLng);
+			// 				showLocation(pos);
 
-					});
-				});
-			}
+			// 		});
+			// 	});
+			// }
 
 
 			// Try HTML5 geolocation.
@@ -306,13 +300,8 @@
 			var centerControl = new CenterControl(centerControlDiv, map);
 			centerControlDiv.index = 1;
 			map.controls[google.maps.ControlPosition.TOP_CENTER].push(centerControlDiv);
+
 		}
-
-
-
-
-
-
 
 		function handleLocationError(browserHasGeolocation, infoWindow, pos) {
 			infoWindow.setPosition(pos);
@@ -361,7 +350,23 @@
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA904jSCpmX86cFJNW68f15DSUziqpOYeI&callback=initMap"
     async defer></script>
 
-    <div id="pub" class="form-post">
+
+
+<div id="sole" class="form-post">
+		<form>
+			<div class="form-group">
+				<h1>혼맥</h1>
+				<label for="exampleFormControlInput1">아티클 URL</label>
+				<input id="posting-url" class="form-control" placeholder="">
+			</div>
+			<div class="form-group">
+				<label for="exampleFormControlTextarea1">간단 코멘트</label>
+				<input id="posting-comment" class="form-control" placeholder="">
+			</div>
+			<button onclick="posting()" type="button" class="btn btn-primary">기사저장</button>
+		</form>
+	</div>
+	<div id="pub" class="form-post">
     	<form>
     		<div class="form-group">
     			<h1>브루펍</h1>
@@ -372,9 +377,11 @@
     			<label for="exampleFormControlTextarea1">간단 코멘트</label>
     			<input id="posting-comment" class="form-control" placeholder="">
     		</div>
-    		<button onclick="posting()" type="button" class="btn btn-primary">기사저장</button>
+    		<button id="btn1" type="button" class="btn btn-primary">기사저장</button>
     	</form>
     </div>
+
+    
 
 
 

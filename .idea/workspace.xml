@@ -1,7 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="3657d7bc-6d7f-4352-919e-125c2f6207ff" name="Default Changelist" comment="" />
+    <list default="true" id="3657d7bc-6d7f-4352-919e-125c2f6207ff" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/beer.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/FavoriteRhythm.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/FavoriteRhythm.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -165,6 +170,10 @@
     </state>
     <state x="570" y="55" key="CommitChangelistDialog2/0.0.1440.900@0.0.1440.900" timestamp="1581609584596" />
     <state x="494" y="418" key="CommitChangelistDialog2/0.23.2560.1337@0.23.2560.1337" timestamp="1581946390719" />
+    <state x="224" y="315" key="FileChooserDialogImpl" timestamp="1582303062516">
+      <screen x="0" y="23" width="1440" height="852" />
+    </state>
+    <state x="224" y="315" key="FileChooserDialogImpl/0.23.1440.852@0.23.1440.852" timestamp="1582303062516" />
     <state width="1419" height="303" key="GridCell.Tab.0.bottom" timestamp="1581609596836">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
@@ -197,10 +206,11 @@
       <screen x="0" y="0" width="1440" height="900" />
     </state>
     <state width="1419" height="303" key="GridCell.Tab.1.right/0.0.1440.900@0.0.1440.900" timestamp="1581609596839" />
-    <state x="221" y="508" key="SettingsEditor" timestamp="1581946353480">
-      <screen x="0" y="23" width="2560" height="1337" />
+    <state x="353" y="152" key="SettingsEditor" timestamp="1582304931524">
+      <screen x="0" y="23" width="1440" height="852" />
     </state>
     <state x="443" y="89" key="SettingsEditor/0.0.1440.900@0.0.1440.900" timestamp="1581524464094" />
+    <state x="353" y="152" key="SettingsEditor/0.23.1440.852@0.23.1440.852" timestamp="1582304931524" />
     <state x="221" y="508" key="SettingsEditor/0.23.2560.1337@0.23.2560.1337" timestamp="1581946353480" />
     <state x="640" y="191" key="Vcs.Push.Dialog.v2" timestamp="1581609587622">
       <screen x="0" y="0" width="1440" height="900" />

@@ -27,9 +27,9 @@
 
 	                //animate()메서드를 이용해서 선택한 태그의 스크롤 위치를 지정해서 0.4초 동안 부드럽게 해당 위치로 이동함 
 
-		        $('html').animate({scrollTop : offset.top}, 1200);
+	                $('html').animate({scrollTop : offset.top}, 1200);
 
-			});
+	            });
 
 		});
 
@@ -72,16 +72,16 @@
 		}
 		/*.row {
 			margin-top: 300px;
-		}*/
-		.form-post {
-			max-width: 500px;
-			padding: 2rem;
-			margin: 2rem auto;
-			border-color: #e9ecef;
-			border-radius: 0.3rem;
-			border: solid;
-			display: block;
-		}
+			}*/
+			.form-post {
+				max-width: 500px;
+				padding: 2rem;
+				margin: 2rem auto;
+				border-color: #e9ecef;
+				border-radius: 0.3rem;
+				border: solid;
+				display: block;
+			}
 
 		 /* Always set the map height explicitly to define the size of the div
 		 * element that contains the map. */
@@ -108,6 +108,7 @@
 			// 아니면 posting-box를 펴라
 			$('#map').hide();
 			$('#pub').hide();
+			$('#pubList').hide();
 			$('#sole').show();
 		}
 	}
@@ -117,11 +118,13 @@
 			// posting-box를 가리고
 			$('#map').hide();
 			$('#pub').hide();
+			$('#pubList').hide();	
 		} else {
 			// 아니면 posting-box를 펴라
 			$('#sole').hide();
 			$('#map').show();
-			$('#pub').show();		
+			$('#pub').show();
+			$('#pubList').show();		
 		}
 	}
 </script>
@@ -132,9 +135,9 @@
 	<div class="container">
 		<div class="row">
 			
-				
-					<img button id="btn1" onclick = "openPub()" src="brewpub.jpg" width=50% height=70% >
-					<img onclick = "openSole()" src="bottleshop.png" width=50% height=70% >
+
+			<img button id="btn1" onclick = "openPub()" src="brewpub.jpg" width=50% height=70% >
+			<img onclick = "openSole()" src="bottleshop.png" width=50% height=70% >
 			
 			
 
@@ -158,50 +161,50 @@
 		
 
 		var locations = [
-			['서울집시', 37.575010, 126.991526],
-			['미켈러 바', 37.520847, 127.023911],
-			['어메이징브루잉', 37.542743, 127.049499],
-			['맥파이 이태원점', 37.539391, 126.987461],
-			['더부스', 37.539315, 126.987715],
-			['캘리 키친', 37.539507, 126.991678],
-			['더 테이블', 37.569774, 126.984343],
-			['브루3.15', 37.574575, 126.989854],
-			['아트몬스터 익선동점', 37.573586, 126.990448],
-			['미스터리브루잉컴퍼니', 37.543874, 126.947681],
-			['서울비어프로젝트', 37.567199, 126.989812],
-			['가로수브루잉컴퍼니', 37.519422, 127.022016],
-			['밴드오브브루어스', 37.503767, 127.052760],
-			['보리마루탭하우스', 37.576350, 126.973776],
-			['합스카치광화문', 37.578771, 126.972950],
+		['서울집시', 37.575010, 126.991526],
+		['미켈러 바', 37.520847, 127.023911],
+		['어메이징브루잉', 37.542743, 127.049499],
+		['맥파이 이태원점', 37.539391, 126.987461],
+		['더부스', 37.539315, 126.987715],
+		['캘리 키친', 37.539507, 126.991678],
+		['더 테이블', 37.569774, 126.984343],
+		['브루3.15', 37.574575, 126.989854],
+		['아트몬스터 익선동점', 37.573586, 126.990448],
+		['미스터리브루잉컴퍼니', 37.543874, 126.947681],
+		['서울비어프로젝트', 37.567199, 126.989812],
+		['가로수브루잉컴퍼니', 37.519422, 127.022016],
+		['밴드오브브루어스', 37.503767, 127.052760],
+		['보리마루탭하우스', 37.576350, 126.973776],
+		['합스카치광화문', 37.578771, 126.972950],
 
 		];
 		
 		var contentString = '<div id="content" onclick="openPub">'+
-            '<div id="siteNotice">'+
-            '</div>'+
-            '<h1 id="firstHeading" class="firstHeading">Uluru</h1>'+
-            '<div id="bodyContent">'+
-            '<p><b>Uluru</b>, also referred to as <b>Ayers Rock</b>, is a large ' +
-            'sandstone rock formation in the southern part of the '+
-            'Northern Territory, central Australia. It lies 335&#160;km (208&#160;mi) '+
-            'south west of the nearest large town, Alice Springs; 450&#160;km '+
-            '(280&#160;mi) by road. Kata Tjuta and Uluru are the two major '+
-            'features of the Uluru - Kata Tjuta National Park. Uluru is '+
-            'sacred to the Pitjantjatjara and Yankunytjatjara, the '+
-            'Aboriginal people of the area. It has many springs, waterholes, '+
-            'rock caves and ancient paintings. Uluru is listed as a World '+
-            'Heritage Site.</p>'+
-            '<p>Attribution: Uluru, <button id="btn1">'+
-            'https://en.wikipedia.org/w/index.php?title=Uluru</button> '+
-            '(last visited June 22, 2009), onclick()="openPub".</p>'+
-            '</div>'+
-            '</div>';
+		'<div id="siteNotice">'+
+		'</div>'+
+		'<h1 id="firstHeading" class="firstHeading">Uluru</h1>'+
+		'<div id="bodyContent">'+
+		'<p><b>Uluru</b>, also referred to as <b>Ayers Rock</b>, is a large ' +
+		'sandstone rock formation in the southern part of the '+
+		'Northern Territory, central Australia. It lies 335&#160;km (208&#160;mi) '+
+		'south west of the nearest large town, Alice Springs; 450&#160;km '+
+		'(280&#160;mi) by road. Kata Tjuta and Uluru are the two major '+
+		'features of the Uluru - Kata Tjuta National Park. Uluru is '+
+		'sacred to the Pitjantjatjara and Yankunytjatjara, the '+
+		'Aboriginal people of the area. It has many springs, waterholes, '+
+		'rock caves and ancient paintings. Uluru is listed as a World '+
+		'Heritage Site.</p>'+
+		'<p>Attribution: Uluru, <button id="btn1">'+
+		'https://en.wikipedia.org/w/index.php?title=Uluru</button> '+
+		'(last visited June 22, 2009), onclick()="openPub".</p>'+
+		'</div>'+
+		'</div>';
 
 
 		
 		function initMap(){
 			
-		
+
 
 			var map = new google.maps.Map(document.getElementById('map'), {
 				center: new google.maps.LatLng(37.556356, 126.987427),
@@ -238,7 +241,7 @@
 					});
 				}
 			}
-	
+
 
 
 			// geocoder = new google.maps.Geocoder();
@@ -346,21 +349,21 @@
 
 
 
-<div id="sole" class="form-post">
-		<form>
-			<div class="form-group">
-				<h1>혼맥</h1>
-				<label for="exampleFormControlInput1">아티클 URL</label>
-				<input id="posting-url" class="form-control" placeholder="">
-			</div>
-			<div class="form-group">
-				<label for="exampleFormControlTextarea1">간단 코멘트</label>
-				<input id="posting-comment" class="form-control" placeholder="">
-			</div>
-			<button onclick="posting()" type="button" class="btn btn-primary">기사저장</button>
-		</form>
-	</div>
-	<div id="pub" class="form-post">
+    <div id="sole" class="form-post">
+    	<form>
+    		<div class="form-group">
+    			<h1>혼맥</h1>
+    			<label for="exampleFormControlInput1">아티클 URL</label>
+    			<input id="posting-url" class="form-control" placeholder="">
+    		</div>
+    		<div class="form-group">
+    			<label for="exampleFormControlTextarea1">간단 코멘트</label>
+    			<input id="posting-comment" class="form-control" placeholder="">
+    		</div>
+    		<button onclick="posting()" type="button" class="btn btn-primary">기사저장</button>
+    	</form>
+    </div>
+    <div id="pub" class="form-post">
     	<form>
     		<div class="form-group">
     			<h1>브루펍</h1>
@@ -373,10 +376,38 @@
     		</div>
     		<button id="btn1" type="button" class="btn btn-primary">기사저장</button>
     	</form>
-    </div>
+   </div>
 
-    
-
+	    <table id="pubList" class="table table-hover">
+	    	<thead>
+	    		<tr>
+	    			<th scope="col">#</th>
+	    			<th scope="col">First</th>
+	    			<th scope="col">Last</th>
+	    			<th scope="col">Handle</th>
+	    		</tr>
+	    	</thead>
+	    	<tbody>
+	    		<tr>
+	    			<th scope="row">1</th>
+	    			<td>Mark</td>
+	    			<td>Otto</td>
+	    			<td>@mdo</td>
+	    		</tr>
+	    		<tr>
+	    			<th scope="row">2</th>
+	    			<td>Jacob</td>
+	    			<td>Thornton</td>
+	    			<td>@fat</td>
+	    		</tr>
+	    		<tr>
+	    			<th scope="row">3</th>
+	    			<td colspan="2">Larry the Bird</td>
+	    			<td>@twitter</td>
+	    		</tr>
+	    	</tbody>
+	    </table>
+ 	
 
 
 

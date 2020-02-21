@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>오늘은 뭘 마실까?</title>
+	<title>Seoul Beer Guide</title>
 
 	<!-- Required meta tags -->
 	<meta charset="utf-8">
@@ -23,7 +23,7 @@
 
 			$('#btn1').click(function(){
 
-				var offset = $('#map').offset(); //선택한 태그의 위치를 반환
+				var offset = $('#next').offset(); //선택한 태그의 위치를 반환
 
 	                //animate()메서드를 이용해서 선택한 태그의 스크롤 위치를 지정해서 0.4초 동안 부드럽게 해당 위치로 이동함 
 
@@ -49,17 +49,20 @@
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 
 	<!-- 구글폰트 -->
-	<link href="https://fonts.googleapis.com/css?family=Stylish&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Nanum+Myeongjo&display=swap" rel="stylesheet">
 
 	<!-- style -->
 	<style type="text/css">
-		#map{
+		#next{
 			display: none;
 		}
 		#sole{
 			display: none;
 		}
 		#pub{
+			display: none;
+		}
+		#pubList{
 			display: none;
 		}
 		* {
@@ -69,6 +72,13 @@
 			
 			margin-top: 90px;
 			margin-bottom: 90px;
+		}
+		.margin{
+			/*margin-left: 50px;*/
+			margin-top: 30px;
+		}
+		.padding{
+			padding-top: 5px;
 		}
 		/*.row {
 			margin-top: 300px;
@@ -96,6 +106,29 @@
 		 	padding: 0;
 		 }
 
+		 #lean_overlay{
+		 	position: fixed;
+		 	z-index: 100;
+		 	top: 0px;
+		 	left: 0px;
+		 	height: 100%;
+		 	width: 100%;
+		 	background: #000;
+		 	display: none;
+		 }
+		 #loginmodal{
+		 	width: 250px; height: 250px;
+		 	margin-top: 100px;
+		 	padding: 18px;
+		 	background: #f3f6fa;
+		 	-webkit-border-radius: 6px;
+		 	-moz-border-radius: 6px;
+		 	border-radius: 6px;
+		 	-webkit-box-shadow: 0 1px 5px rgba(0, 0, 0, 0.5);
+		 	-moz-box-shadow: 0 1px 5px rgba(0, 0, 0, 0.5);
+		 	box-shadow: 0 1px 5px rgba(0, 0, 0, 0.5);
+		 }
+
 		</style>
 
 		<script type="text/javascript">
@@ -106,7 +139,7 @@
 			$('#sole').hide();
 		} else {
 			// 아니면 posting-box를 펴라
-			$('#map').hide();
+			$('#next').hide();
 			$('#pub').hide();
 			$('#pubList').hide();
 			$('#sole').show();
@@ -114,15 +147,15 @@
 	}
 	function openPub(){
 			// id 값 posting-box의 display 값이 block 이면
-			if ( $('#map').css('display') == 'block' ) {
+			if ( $('#next').css('display') == 'block' ) {
 			// posting-box를 가리고
-			$('#map').hide();
+			$('#next').hide();
 			$('#pub').hide();
 			$('#pubList').hide();	
 		} else {
 			// 아니면 posting-box를 펴라
 			$('#sole').hide();
-			$('#map').show();
+			$('#next').show();
 			$('#pub').show();
 			$('#pubList').show();		
 		}
@@ -132,6 +165,35 @@
 
 </head>
 <body>
+
+	<!-- 클릭버튼 -->
+	<a href="#loginmodal" class="flatbtn" id="modaltrigger">로그인클릭</a>
+	<!-- 레이어 팝업 -->
+	<div id="loginmodal" style="display:none;">
+		<h2>login</h2>
+		<div>회원이 되시면 여러가지 해택을 누리실 수 있습니다.</div>
+		<div class="login_line">
+			<div class = "box_in">
+				<input type="text" name="id" id="id" size="23">
+				<input type="text" name="pw" id="pw" size="23">
+			</div>
+			<span class = "btn_login">login</span>
+		</div>
+
+	</div>
+
+
+	<script type="text/javascript">
+		$(function(){
+			$('#loginform').submit(function(e){
+				return false;
+			});
+			$('#modaltrigger').leanModal({top: 110, overlay:0.8, closeButton:".hidemodal"});
+		});
+	</script>
+	
+
+
 	<div class="container">
 		<div class="row">
 			
@@ -146,13 +208,19 @@
 
 	
 
-	
+	<div id="next" class="jumbotron padding">
+		<div class="container">
+			<h1 class="display-4">Find BREWPUB</h1>
+			<p class="lead">This is a modified jumbotron that occupies the entire horizontal space of its parent.</p>
+			<div id="map" class="map"></div>
 
-
-
-	<div id="map" class="map">
-		<a href="">BREWPUB</a>
+		</div>
 	</div>
+
+
+
+		
+	
 
 	<script type="text/javascript">
 
@@ -210,6 +278,7 @@
 				center: new google.maps.LatLng(37.556356, 126.987427),
 				zoom: 12,
 				mapTypeId: google.maps.MapTypeId.ROADMAP
+
 			});
 
 			var infowindow = new google.maps.InfoWindow({
@@ -298,6 +367,8 @@
 			centerControlDiv.index = 1;
 			map.controls[google.maps.ControlPosition.TOP_CENTER].push(centerControlDiv);
 
+			// 블랙 구글맵
+			
 		}
 
 		function handleLocationError(browserHasGeolocation, infoWindow, pos) {
@@ -340,6 +411,8 @@
         	});
         }
 
+
+
     </script>
 
     <!-- 구글맵 api키인증 -->
@@ -363,6 +436,38 @@
     		<button onclick="posting()" type="button" class="btn btn-primary">기사저장</button>
     	</form>
     </div>
+
+
+    <table id="pubList" class="table table-hover ">
+    	<thead>
+    		<tr>
+    			<th scope="col">#</th>
+    			<th scope="col">First</th>
+    			<th scope="col">Last</th>
+    			<th scope="col">Handle</th>
+    		</tr>
+    	</thead>
+    	<tbody>
+    		<tr>
+    			<th scope="row">1</th>
+    			<td>Mark</td>
+    			<td>Otto</td>
+    			<td>@mdo</td>
+    		</tr>
+    		<tr>
+    			<th scope="row">2</th>
+    			<td>Jacob</td>
+    			<td>Thornton</td>
+    			<td>@fat</td>
+    		</tr>
+    		<tr>
+    			<th scope="row">3</th>
+    			<td colspan="2">Larry the Bird</td>
+    			<td>@twitter</td>
+    		</tr>
+    	</tbody>
+    </table>
+
     <div id="pub" class="form-post">
     	<form>
     		<div class="form-group">
@@ -376,39 +481,7 @@
     		</div>
     		<button id="btn1" type="button" class="btn btn-primary">기사저장</button>
     	</form>
-   </div>
-
-	    <table id="pubList" class="table table-hover">
-	    	<thead>
-	    		<tr>
-	    			<th scope="col">#</th>
-	    			<th scope="col">First</th>
-	    			<th scope="col">Last</th>
-	    			<th scope="col">Handle</th>
-	    		</tr>
-	    	</thead>
-	    	<tbody>
-	    		<tr>
-	    			<th scope="row">1</th>
-	    			<td>Mark</td>
-	    			<td>Otto</td>
-	    			<td>@mdo</td>
-	    		</tr>
-	    		<tr>
-	    			<th scope="row">2</th>
-	    			<td>Jacob</td>
-	    			<td>Thornton</td>
-	    			<td>@fat</td>
-	    		</tr>
-	    		<tr>
-	    			<th scope="row">3</th>
-	    			<td colspan="2">Larry the Bird</td>
-	    			<td>@twitter</td>
-	    		</tr>
-	    	</tbody>
-	    </table>
- 	
-
+    </div>
 
 
 

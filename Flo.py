@@ -1,3 +1,4 @@
+# coding=utf-8
 import requests
 from selenium import webdriver
 from selenium.webdriver.support.ui import Select
@@ -14,7 +15,7 @@ driver.get(home_url)
 
 
 driver.implicitly_wait(5)
-# Login 버튼누르기
+#Login 버튼누르기
 #header > div > div > ul > li:nth-child(2) > a
 
 

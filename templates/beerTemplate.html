@@ -106,8 +106,13 @@
 		 	margin: 0;
 		 	padding: 0;
 		 }
-		
-		.btn {cursor:pointer;}
+
+		 .btn {cursor:pointer;}
+
+		 .images{
+		 	width:150px;
+		 	height:150px;
+		 }
 		 
 
 
@@ -186,14 +191,74 @@
 		 	border: 1px solid #091940;
 		 	background-color: #1f326a;
 		 	color: #fff;
+		 }
+
+
+
+		 :root {
+		 	--size: 100px;
+		 	--bord: 10px;
+		 }
+
+		 .chart {
+		 	width: var(--size);
+		 	height: var(--size);
+		 	margin: 1em auto;
+		 	border-radius: 50%;
+		 	background-image: conic-gradient(lightseagreen var(--value), lightgrey var(--value));
+		 	position: relative;
+		 	display: flex;
+		 	justify-content: center;
+		 	align-items: center;
+		 }
+
+		 .chart::after {
+		 	content: "";
+		 	position: absolute;
+		 	left: 50%;
+		 	top: 50%;
+		 	transform: translate(-50%, -50%);
+		 	width: calc(100% - var(--bord));
+		 	height: calc(100% - var(--bord));
+		 	background: white;
+		 	border-radius: inherit;
+		 }
+
+		 p {
+		 	position: relative;
+		 	z-index: 1;
+		 	font-size: 2em;
+		 }
+		 
+
+
+
+		 .x-80 {
+		 	--value: 80%;
+		 }
+
+		 .x-20 {
+		 	--value: 20%;
+		 }
+		 .x-25 {
+		 	--value: 25%;
+		 }
+		 .list-group-item{
+		 	margin: auto;
+		 	width: 900px;
+		 }
 
 
 
 
-		 </style>
 
-		 <script type="text/javascript">
-		 	function openSole(){
+
+
+
+		</style>
+
+		<script type="text/javascript">
+			function openSole(){
 			// id 값 posting-box의 display 값이 block 이면
 			if ( $('#sole').css('display') == 'block' ) {
 			// posting-box를 가리고
@@ -260,7 +325,7 @@
 		<div class="container">
 			<h1 class="display-4">Find BREWPUB</h1>
 			<p class="lead">This is a modified jumbotron that occupies the entire horizontal space of its parent.</p>
-			<div id="map" class="map"></div>
+			<div id="map"></div>
 
 		</div>
 	</div>
@@ -332,81 +397,80 @@
 
 
 
-		// infoWindow
-		var infowindow = new google.maps.InfoWindow({
-			content: contentString
-		});
-
-
-
-
-		var marker, i;
-
-		for (i = 0; i < locations.length; i++){
-			marker = new google.maps.Marker({
-				id: i,
-				position: new google.maps.LatLng(locations[i][1], locations[i][2]),
-				map: map
-
-
+			// infoWindow
+			var infowindow = new google.maps.InfoWindow({
+				content: contentString
 			});
 
-			google.maps.event.addListener(marker, 'click', (function(marker, i){
-				return function(){
-						// infowindow.setContent(locations[i][0]);
-						infowindow.open(map, marker);
-					}
-				})(marker, i));
-			if(marker)
-			{
-				marker.addListener('click', function(){
-					map.setZoom(15);
-					map.setCenter(this.getPosition());
+
+
+
+			var marker, i;
+
+			for (i = 0; i < locations.length; i++){
+				marker = new google.maps.Marker({
+					id: i,
+					position: new google.maps.LatLng(locations[i][1], locations[i][2]),
+					map: map
+
+
 				});
+
+				google.maps.event.addListener(marker, 'click', (function(marker, i){
+					return function(){
+							// infowindow.setContent(locations[i][0]);
+							infowindow.open(map, marker);
+						}
+					})(marker, i));
+				if(marker)
+				{
+					marker.addListener('click', function(){
+						map.setZoom(15);
+						map.setCenter(this.getPosition());
+					});
+				}
 			}
+
+
+
+
+
+
+
+			// Try HTML5 geolocation.
+			var map, infoWindow;
+			infoWindow = new google.maps.InfoWindow;
+			if (navigator.geolocation){
+				navigator.geolocation.getCurrentPosition(function(position){
+					var pos = {
+						lat: position.coords.latitude,
+						lng: position.coords.longitude
+					};
+
+					infoWindow.setPosition(pos);
+					infoWindow.setContent('지금여기');
+					infoWindow.open(map);
+					map.setCenter(pos);
+				}, function(){
+					handleLocationError(true, infoWindow, map.getCenter());
+
+				});
+			} else {
+				// Browser doesn't support Geolocation
+				handleLocationError(false, infoWindow, map.getCenter());
+			}
+
+
+
+
+
+			var centerControlDiv = document.createElement('div');
+			var centerControl = new CenterControl(centerControlDiv, map);
+			centerControlDiv.index = 1;
+			map.controls[google.maps.ControlPosition.TOP_CENTER].push(centerControlDiv);
+
 		}
 
-
-
-
-
-
-
-		// Try HTML5 geolocation.
-		var map, infoWindow;
-		infoWindow = new google.maps.InfoWindow;
-		if (navigator.geolocation){
-			navigator.geolocation.getCurrentPosition(function(position){
-				var pos = {
-					lat: position.coords.latitude,
-					lng: position.coords.longitude
-				};
-
-				infoWindow.setPosition(pos);
-				infoWindow.setContent('지금여기');
-				infoWindow.open(map);
-				map.setCenter(pos);
-			}, function(){
-				handleLocationError(true, infoWindow, map.getCenter());
-
-			});
-		} else {
-			// Browser doesn't support Geolocation
-			handleLocationError(false, infoWindow, map.getCenter());
-		}
-
-
-
-
-
-		var centerControlDiv = document.createElement('div');
-		var centerControl = new CenterControl(centerControlDiv, map);
-		centerControlDiv.index = 1;
-		map.controls[google.maps.ControlPosition.TOP_CENTER].push(centerControlDiv);
-
-
-
-	}
 
 		// 위치
 		function handleLocationError(browserHasGeolocation, infoWindow, pos) {
@@ -450,6 +514,40 @@
         }
 
 
+        $(document).ready(function(){
+        	$('#layer-btn').html('');
+        	listing();
+        });
+
+        function listing(){
+
+        	$.ajax({
+        		type: "GET"
+        		url: "/post"
+        		data: {},
+        		success: function(response){
+        			let brewerys = response['brewerys'];
+        			for (let i = 0; i < brewerys.length; i++) {
+        				make_card(brewerys[i]['score'],brewerys[i]['brewery'],brewerys[i]['address'],brewerys[i]['geo'],brewerys[i]['time'],brewerys[i]['image'])
+        			}
+        		}
+        	})
+        }
+
+        function make_card(image, brewery, address, time, score){
+        	let temp_html = '<tr>\
+        	<td>'+image+'</td>\
+        	<td>'+brewery+'</td>\
+        	<td>'+address+'</td>\
+        	<td>'+time+'</td>\
+        	<td>'+score+'</td>\
+        	</tr>';
+        	$('#layer-btn').append(temp_html);
+        }
+        
+        
+
+
 
     </script>
 
@@ -476,42 +574,52 @@
     </div>
 
 
-    <table id="pubList" class="table table-hover ">
-    	<thead>
-    		<tr>
-    			<th scope="col">#</th>
-    			<th scope="col">First</th>
-    			<th scope="col">Last</th>
-    			<th scope="col">Handle</th>
-    		</tr>
-    		<tbody>
-    			<tr>
-    				<th scope="row">1</th>
-    				<td >Mark</td>
-    				<td>Otto</td>
-    				<td>@mdo</td>
-    			</tr>
-    			<tr>
-    				<th scope="row">2</th>
-    				<td>Jacob</td>
-    				<td>Thornton</td>
-    				<td>@fat</td>
-    			</tr>
-    			<tr>
-    				<th scope="row">3</th>
-    				<td>Larry</td>
-    				<td>the Bird</td>
-    				<td>
-    					<button id="layer-btn" href="#layer2" type="button" class="btn btn-outline-warning">Menu</button>
-    				</td>
-    			</tr>
-    		</tbody>
-    	</thead>
-    	<td>
 
-    	</td>
-    	
-    </table>
+    <!-- <button id="layer-btn" href="#layer2" type="button" class="btn btn-outline-warning">Menu</button> -->
+
+    <!-- id="pubList" -->
+
+    
+    <button id="layer-btn" href="#layer2" type="button" class="list-group-item list-group-item-action">
+    	<div class="row">
+    		<div class="col-sm-2">
+    			<img class="images" src="https://scontent-gmp1-1.xx.fbcdn.net/v/t1.0-9/45516047_2125163027811931_5140769931381440512_n.jpg?_nc_cat=109&_nc_ohc=yBjhgKEiswAAX9_uVv9&_nc_ht=scontent-gmp1-1.xx&oh=ae345e9421efd7b63d414ca11f0c8389&oe=5EBF7D07">
+    		</div>
+    		<div class="col" style="margin-top:30px">
+    			<h2>Amazing Brewing Company</h2>
+    			<h5>성동구 성수동1가 27-12, SEOUL</h5>
+    			<h6>Mon-Fri 16:00-01:00 Sat-Sun 12:00-01:00</h6>
+    		</div>
+    		<div class="col-sm-2">
+    			<div class="chart x-80">
+    				<p style="margin-top:20px">83</p>
+    			</div>
+    		</div>
+    	</div>
+
+
+
+    </button>
+    <button id="layer-btn" href="#layer2" type="button" class="list-group-item list-group-item-action">
+    	<div class="row">
+    		<div class="col-sm-2">
+    			<img class="images" src="https://scontent-gmp1-1.xx.fbcdn.net/v/t1.0-9/45516047_2125163027811931_5140769931381440512_n.jpg?_nc_cat=109&_nc_ohc=yBjhgKEiswAAX9_uVv9&_nc_ht=scontent-gmp1-1.xx&oh=ae345e9421efd7b63d414ca11f0c8389&oe=5EBF7D07">
+    		</div>
+    		<div class="col" style="margin-top:30px">
+    			<h2>Amazing Brewing Company</h2>
+    			<h5>성동구 성수동1가 27-12, SEOUL</h5>
+    			<h6>Mon-Fri 16:00-01:00 Sat-Sun 12:00-01:00</h6>
+    		</div>
+    		<div class="col-sm-2">
+    			<div class="chart x-80">
+    				<p style="margin-top:20px">83</p>
+    			</div>
+    		</div>
+    	</div>
+
+    </button>
+    
+
 
     
 
@@ -533,65 +641,70 @@
 
 
 
-	<!-- 팝업창 -->
-	<div class="dim-layer">
-		<div class="dimBg"></div>
-		<div id="layer2" class="pop-layer">
-			<div class="pop-container">
-				<div class="pop-conts">
-					<!--content //-->
-					<p class="ctxt mb20">Thank you.<br>
-						Your registration was submitted successfully.<br>
-						Selected invitees will be notified by e-mail on JANUARY 24th.<br><br>
-						Hope to see you soon!
-					</p>
+    <!-- 팝업창 -->
+    <div class="dim-layer">
+    	<div class="dimBg"></div>
+    	<div id="layer2" class="pop-layer">
+    		<div class="pop-container">
+    			<div class="pop-conts">
+    				<!--content //-->
+    				<p class="ctxt mb20">Thank you.<br>
+    					Your registration was submitted successfully.<br>
+    					Selected invitees will be notified by e-mail on JANUARY 24th.<br><br>
+    					Hope to see you soon!
+    				</p>
 
-					<div class="btn-r">
-						<a href="#" class="btn-layerClose">Close</a>
-					</div>
-					<!--// content-->
-				</div>
-			</div>
-		</div>
-	</div>
+    				<div class="btn-r">
+    					<a href="#" class="btn-layerClose">Close</a>
+    				</div>
+    				<!--// content-->
+    			</div>
+    		</div>
+    	</div>
+    </div>
     <script type="text/javascript">
     	$('#layer-btn').click(function(){
     		var $href = $(this).attr('href');
     		layer_popup($href);
     	});
+
+    	$('#layer-btn2').click(function(){
+    		var $href = $(this).attr('href');
+    		layer_popup($href);
+    	});
     	function layer_popup(el){
 
-        var $el = $(el);        //레이어의 id를 $el 변수에 저장
-        var isDim = $el.prev().hasClass('dimBg');   //dimmed 레이어를 감지하기 위한 boolean 변수
+	        var $el = $(el);        //레이어의 id를 $el 변수에 저장
+	        var isDim = $el.prev().hasClass('dimBg');   //dimmed 레이어를 감지하기 위한 boolean 변수
 
-        isDim ? $('.dim-layer').fadeIn() : $el.fadeIn();
+	        isDim ? $('.dim-layer').fadeIn() : $el.fadeIn();
 
-        var $elWidth = ~~($el.outerWidth()),
-        $elHeight = ~~($el.outerHeight()),
-        docWidth = $(document).width(),
-        docHeight = $(document).height();
+	        var $elWidth = ~~($el.outerWidth()),
+	        $elHeight = ~~($el.outerHeight()),
+	        docWidth = $(document).width(),
+	        docHeight = $(document).height();
 
-        // 화면의 중앙에 레이어를 띄운다.
-        if ($elHeight < docHeight || $elWidth < docWidth) {
-        	$el.css({
-        		marginTop: -$elHeight /2,
-        		marginLeft: -$elWidth/2
-        	})
-        } else {
-        	$el.css({top: 0, left: 0});
-        }
+	        // 화면의 중앙에 레이어를 띄운다.
+	        if ($elHeight < docHeight || $elWidth < docWidth) {
+	        	$el.css({
+	        		marginTop: -$elHeight /2,
+	        		marginLeft: -$elWidth/2
+	        	})
+	        } else {
+	        	$el.css({top: 0, left: 0});
+	        }
 
-        $el.find('a.btn-layerClose').click(function(){
-            isDim ? $('.dim-layer').fadeOut() : $el.fadeOut(); // 닫기 버튼을 클릭하면 레이어가 닫힌다.
-            return false;
-        });
+	        $el.find('a.btn-layerClose').click(function(){
+	            isDim ? $('.dim-layer').fadeOut() : $el.fadeOut(); // 닫기 버튼을 클릭하면 레이어가 닫힌다.
+	            return false;
+	        });
 
-        $('.layer .dimBg').click(function(){
-        	$('.dim-layer').fadeOut();
-        	return false;
-        });
+	        $('.layer .dimBg').click(function(){
+	        	$('.dim-layer').fadeOut();
+	        	return false;
+	        });
 
-    	}
+	    }
 	</script>
 
 

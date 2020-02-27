@@ -27,7 +27,33 @@
 
 	                //animate()메서드를 이용해서 선택한 태그의 스크롤 위치를 지정해서 0.4초 동안 부드럽게 해당 위치로 이동함 
 
-	                $('html').animate({scrollTop : offset.top}, 1200);
+	                $('html').animate({scrollTop : offset.top}, 800);
+
+	            });
+		});
+
+		$(document).ready(function(){
+
+			$('#floating').click(function(){
+
+				var offset = $('#next').offset(); //선택한 태그의 위치를 반환
+
+	                //animate()메서드를 이용해서 선택한 태그의 스크롤 위치를 지정해서 0.4초 동안 부드럽게 해당 위치로 이동함 
+
+	                $('html').animate({scrollTop : offset.top}, 800);
+
+	            });
+		});
+
+		$(document).ready(function(){
+
+			$('#go').click(function(){
+
+				var offset = $('#3').offset(); //선택한 태그의 위치를 반환
+
+	                //animate()메서드를 이용해서 선택한 태그의 스크롤 위치를 지정해서 0.4초 동안 부드럽게 해당 위치로 이동함 
+
+	                $('html').animate({scrollTop : offset.top}, 800);
 
 	            });
 		});
@@ -37,8 +63,9 @@
 	</script>
 
 
-
-
+	<!-- gui -->
+	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
 
 
 	<!-- Bootstrap CSS -->
@@ -197,15 +224,18 @@
 
 		 :root {
 		 	--size: 100px;
-		 	--bord: 10px;
+		 	--bord: 15px;
 		 }
 
 		 .chart {
 		 	width: var(--size);
 		 	height: var(--size);
 		 	margin: 1em auto;
+		 	
+
+		 	margin-bottom: 5px;
 		 	border-radius: 50%;
-		 	background-image: conic-gradient(lightseagreen var(--value), lightgrey var(--value));
+		 	background-image: conic-gradient(lightseagreen var(--value), white var(--value));
 		 	position: relative;
 		 	display: flex;
 		 	justify-content: center;
@@ -229,24 +259,144 @@
 		 	z-index: 1;
 		 	font-size: 2em;
 		 }
+		 .Tmark{
+		 	width: 60px;
+		 	margin-left: 25px;
+
+		 }
+		 .chart2 {
+		 	width: var(--size);
+		 	height: var(--size);
+		 	margin: 1em auto;
+		 	
+
+		 	margin-bottom: 5px;
+		 	border-radius: 50%;
+		 	background-image: conic-gradient(#FFAE00 var(--value), white var(--value));
+		 	position: relative;
+		 	display: flex;
+		 	justify-content: center;
+		 	align-items: center;
+		 }
+
+		 .chart2::after {
+		 	content: "";
+		 	position: absolute;
+		 	left: 50%;
+		 	top: 50%;
+		 	transform: translate(-50%, -50%);
+		 	width: calc(100% - var(--bord));
+		 	height: calc(100% - var(--bord));
+		 	background: white;
+		 	border-radius: inherit;
+		 }
+		 .Tmark2{
+		 	width: 75px;
+		 	margin-left: 38px;
+
+		 }
+
 		 
 
 
-
+		 .x-83 {
+		 	--value: 83%;
+		 }
 		 .x-80 {
 		 	--value: 80%;
 		 }
+		 .x-77 {
+		 	--value: 77%;
+		 }
+		 .x-76 {
+		 	--value: 76%;
+		 }
 
-		 .x-20 {
-		 	--value: 20%;
+		 .x-73 {
+		 	--value: 73%;
 		 }
-		 .x-25 {
-		 	--value: 25%;
+		 .x-72 {
+		 	--value: 72%;
 		 }
+		 .x-71 {
+		 	--value: 71%;
+		 }
+
+		 .x-70 {
+		 	--value: 70%;
+		 }
+		 .x-69 {
+		 	--value: 69%;
+		 }
+		 .x-68 {
+		 	--value: 68%;
+		 }
+		 .x-67 {
+		 	--value: 67%;
+		 }
+		 .x-66 {
+		 	--value: 66%;
+		 }
+		 .x-65 {
+		 	--value: 65%;
+		 }
+		 .x-64 {
+		 	--value: 64%;
+		 }
+		 .x-63 {
+		 	--value: 63%;
+		 }
+		 .x-62 {
+		 	--value: 62%;
+		 }
+		 .x-NaN {
+		 	--value: 10%;
+		 }
+
+		 
+
 		 .list-group-item{
 		 	margin: auto;
-		 	width: 900px;
+		 	width: 1100px;
+		 	padding-right: 1px;
 		 }
+		 .listText{
+		 	padding-top: 30px;
+		 	padding-left: 40px;
+
+		 }
+		 .list{
+		 	margin-bottom: 10px;
+		 }
+
+
+
+
+		 *{padding:0;margin:0;}
+
+		 body{
+		 	font-family:Verdana, Geneva, sans-serif;
+		 	font-size:18px;
+		 	background-color:#2e2e2e;
+		 }
+
+		 .float{
+		 	position:fixed;
+		 	width:60px;
+		 	height:60px;
+		 	bottom:40px;
+		 	right:20px;
+		 	background-color:#0C9;
+		 	color:#FFF;
+		 	border-radius:50px;
+		 	text-align:center;
+		 	box-shadow: 2px 2px 3px #2e2e2e;
+		 }
+
+		 .my-float{
+		 	margin-top:22px;
+		 }
+		 
 
 
 
@@ -258,141 +408,212 @@
 		</style>
 
 		<script type="text/javascript">
+			
 			function openSole(){
 			// id 값 posting-box의 display 값이 block 이면
 			if ( $('#sole').css('display') == 'block' ) {
 			// posting-box를 가리고
 			$('#sole').hide();
 		} else {
-			// 아니면 posting-box를 펴라
-			$('#next').hide();
-			$('#pub').hide();
-			$('#pubList').hide();
-			$('#sole').show();
-		}
-	}
-	function openPub(){
-			// id 값 posting-box의 display 값이 block 이면
-			if ( $('#next').css('display') == 'block' ) {
-			// posting-box를 가리고
-			$('#next').hide();
-			$('#pub').hide();
-			$('#pubList').hide();	
-		} else {
-			// 아니면 posting-box를 펴라
-			$('#sole').hide();
-			$('#next').show();
-			$('#pub').show();
-			$('#pubList').show();		
-		}
-	}
+					// 아니면 posting-box를 펴라
+					$('#next').hide();
+					$('#pub').hide();
+					$('#pubList').hide();
+					$('#sole').show();
+				}
+			}
+			function openPub(){
+					// id 값 posting-box의 display 값이 block 이면
+					if ( $('#next').css('display') == 'block' ) {
+					// posting-box를 가리고
+					$('#next').hide();
+					$('#pub').hide();
+					$('#pubList').hide();	
+				} else {
+					// 아니면 posting-box를 펴라
+					$('#sole').hide();
+					$('#next').show();
+					$('#pub').show();
+					$('#pubList').show();		
+				}
+			}
 
-	
-</script>
+			function showPopup() { window.open("08_2_popup.html", "a", "width=400, height=300, left=100, top=50"); }
+
+			
+			
+		</script>
 
 
-</head>
-<body>
-	
-	
-	
-
-	
+	</head>
+	<body>
 
 
 
-	
-
-
-
-
-
-	<div class="container">
-		<div class="row">
-
-
-			<img class="btn" id="btn1" onclick = "openPub()" src="https://lh3.googleusercontent.com/r3X0Wah_qiXZDoEhzI7SMPd5YmUlE0SX8fIC5fmZvz3kJ8NXVODz0G7Gb_hqG1bUWvU4LoVV1LiyAY8WBhN2bRNr05aUW89JU7dfrEy5XlEc1mZOPyhfG6SoQuYoDa1WWT-H_bxI7NvrTi8dT_fy3v2eUXxNFPHwprjVTOjERJnEolYA3dDCMi4V3HKEHkUwtsk0Fti8mRCdFz7rRtAx4Kr-yhkpjpAqmDSfhvxu4jBPOZ_X39IAIOpBeY-kMFQAGcSwaIObxfzsNX82q1TiZES6CONiTIW5XTijFvnNYj0aoJTs4XZyoeIfLJWtUnAQpYpClBblYH9L7_cjKjA1B4_U-sN7VZZ8QtceQDyggM2WXzC3SP9SZKi454ARF0E_KGvfoeNYdCX7wWWcd0PY9UxSRMvI6dSGjVc-zAUEQM86F_pv0eaNA6O21TU0uYGjK-wn63oi8AGOKQLObJRDHKkidrwnYipq77oAzD3CRC0KweWy3VVCDpSbJXBUgSvM3WAaxFEh4NSpVqMJTR7cy1Of9a-8wDyd4yr2WZpwQlgsntxnt5NZ24RysY6OjlTgiywKnR68MPzDouhXJgRwtU3N8EOtnzulWp1WCvCQzm4TFvlIgU9C6j-GfcTXHPmbrx1I2HbSwJOxBwE2W6FhNz7QIo1GdNbrwa-Cu3EO6ho0WQ-fRr2GtA=w786-h862-no" width=49.5% height=70% >
-			<img class="btn" onclick = "openSole()" src="https://lh3.googleusercontent.com/wm2sZ8Ic0-LYF55suj6unN9ONBIoWb8p6glJrvqAmOmAF0j3H5m-5zjQlbFqSynmMsAJv6LHXoAraWoZnJH8XHxi1MPUiu7qfZ0wH67eTw08FER4u_f7YZP9EgLmLozFQAMC2lnEucao-QUFR7hOn1T4sTLQFb_GSqB74KSVALHIur-NUdVhN9jq5qpWEg30MinDuikbX25a7wgnqHUIE9zXixf-DBWiGa1hZ1VwW4q1n0-SCK464RiGhlIQ8eIvvhDFx1Vc2xKP39sAMYJTfMaARxY8koVlnYJJDjSdSZYZPQ8_zRXVhYe9dLSMbIT2B67Ghb7JzBr4AEP42sNZ3elWx7R3b7CN4izswGaxaTp4pxQpuAsPdjhKGl7VMznzhIhhy_hINjELjkbqPD3kMfooRGZCMvs4jUi_yH0fZ8CKrGhu2TRa_FHx7_AEjj0WIs_18ltl_Km3VUv5fmUzo7sutfdvtLHjsboVNL-AldY4P71i5iOtyS7TanE7fCPBdcdvo33lP0EWAx6ACXq5xoTFazhoCCg7Os00Rqb-5DCvjjNKA8nvW7HVmhmNUmvo5oXU0xDHoHj_lOW-8gv71G1KbKYKYAwza3L9SvGukW-TXaZHvKKyags7h8aV4E-xKsdrSOLCEq6leSMeYPWkU6k5kuD8hIFotSSTqM7uZveWinAsxSDWLA=w786-h850-no"align="middle" width=50% height=70% >
-
-
-
-		</div>
-	</div>
-
-
-
-	<div id="next" class="jumbotron padding">
 		<div class="container">
-			<h1 class="display-4">Find BREWPUB</h1>
-			<p class="lead">This is a modified jumbotron that occupies the entire horizontal space of its parent.</p>
-			<div id="map"></div>
+			<div class="row">
 
+
+				<img class="btn" id="btn1" onclick = "openPub()" src="https://miro.medium.com/max/1872/1*0PJMNeBQ4ziOj5Qh_OO8MQ.jpeg" width=49.5% height=70% >
+				<img class="btn" onclick = "openSole()" src="https://miro.medium.com/max/1900/1*V23dpOOahD8Q4MJ0c0_Dpw.png" width=50% height=70% >
+
+
+
+			</div>
 		</div>
-	</div>
+
+
+
+		<div id="next" class="jumbotron padding">
+			<div class="container">
+				<h1 class="display-4">Find BREWPUB</h1>
+				<p class="lead">This is a modified jumbotron that occupies the entire horizontal space of its parent.</p>
+				<div id="map"></div>
+
+			</div>
+		</div>
 
 
 
 
 
 
-	<script type="text/javascript">
-
-
-		var center = {lat:37.561045, lng:126.990779};
-
-
-		var locations = [
-		['서울집시', 37.575010, 126.991526],
-		['미켈러 바', 37.520847, 127.023911],
-		['어메이징브루잉', 37.542743, 127.049499],
-		['맥파이 이태원점', 37.539391, 126.987461],
-		['더부스', 37.539315, 126.987715],
-		['캘리 키친', 37.539507, 126.991678],
-		['더 테이블', 37.569774, 126.984343],
-		['브루3.15', 37.574575, 126.989854],
-		['아트몬스터 익선동점', 37.573586, 126.990448],
-		['미스터리브루잉컴퍼니', 37.543874, 126.947681],
-		['서울비어프로젝트', 37.567199, 126.989812],
-		['가로수브루잉컴퍼니', 37.519422, 127.022016],
-		['밴드오브브루어스', 37.503767, 127.052760],
-		['보리마루탭하우스', 37.576350, 126.973776],
-		['합스카치광화문', 37.578771, 126.972950],
-
-		];
-
-		var contentString = '<div id="content" onclick="openPub">'+
-		'<div id="siteNotice">'+
-		'</div>'+
-		'<h1 id="firstHeading" class="firstHeading">Uluru</h1>'+
-		'<div id="bodyContent">'+
-		'<p><b>Uluru</b>, also referred to as <b>Ayers Rock</b>, is a large ' +
-		'sandstone rock formation in the southern part of the '+
-		'Northern Territory, central Australia. It lies 335&#160;km (208&#160;mi) '+
-		'south west of the nearest large town, Alice Springs; 450&#160;km '+
-		'(280&#160;mi) by road. Kata Tjuta and Uluru are the two major '+
-		'features of the Uluru - Kata Tjuta National Park. Uluru is '+
-		'sacred to the Pitjantjatjara and Yankunytjatjara, the '+
-		'Aboriginal people of the area. It has many springs, waterholes, '+
-		'rock caves and ancient paintings. Uluru is listed as a World '+
-		'Heritage Site.</p>'+
-		'<p>Attribution: Uluru, <a id="go" href="#pubList" >'+
-		'자세히보기</a> '+
-		'(last visited June 22, 2009), onclick()="openPub".</p>'+
-		'</div>'+
-		'</div>';
-
-
-
-		function initMap(){
-
-
-
-			var map = new google.maps.Map(document.getElementById('map'), {
-				center: new google.maps.LatLng(37.556356, 126.987427),
-				zoom: 12,
-				mapTypeId: google.maps.MapTypeId.ROADMAP
-
+		<script type="text/javascript">
+			$(document).ready(function(){
+				$('#brewList').html('');
+				listing();
 			});
+			function listing(){
+
+				$.ajax({
+					type: "GET",
+					url: "/post",
+					data: {},
+					success: function(response){
+						if (response['result'] == 'success') {
+							let brewerys = response['brewerys'];
+							for (let i = 0; i < brewerys.length; i++) {
+								make_card(brewerys[i]['image'], brewerys[i]['brewery'], brewerys[i]['address'], brewerys[i]['time'], brewerys[i]['score'], brewerys[i]['score2'], i)
+								
+							}
+						} else {
+							alert('데이터를 가져오지 못했습니다');
+						}
+
+					}
+				})
+			}
+			function make_card(image, brewery, address, time, score, score2, i){
+				let temp_html = '<button id="'+i+'" href="#layer2" type="button" class="list list-group-item list-group-item-action">\
+				<div class="row">\
+				<div class="col-sm-2">\
+				<img class="images" src="'+image+'">\
+				</div>\
+				<div class="col listText">\
+				<h2>'+brewery+'</h2>\
+				<h5>'+address+'</h5>\
+				<h6>'+time+'</h6>\
+				</div>\
+				<div class="col-sm-1">\
+				<div class="chart x-'+score+'">\
+				<p style="margin-top:20px">'+score+'</p>\
+				</div>\
+				<img class="Tmark" src="https://www.ratebeer.com/images/logos/ratebeer_horizontal.svg">\
+				</div>\
+				<div class="col-sm-2">\
+				<div class="chart2 x-'+Math.floor(score2*100/5)+'">\
+				<p style="margin-top:20px">'+ score2 +'</p>\
+				</div>\
+				<img class="Tmark2" src="https://images.squarespace-cdn.com/content/v1/5a98cbaeda02bcccd242a247/1528163883905-NLF8MW6I0YU2WVC2ZVUN/ke17ZwdGBToddI8pDm48kOy20YrZ8pM7m2Fb1rPf-OBZw-zPPgdn4jUwVcJE1ZvWQUxwkmyExglNqGp0IvTJZUJFbgE-7XRK3dMEBRBhUpxPP_ZK66c5r5qS5LcY9-kcJ2JKD29gwqUawVoZxxM9FhDMMPhobtns2m7Ifzels7s/untappd.png">\
+				</div>\
+				</div>\
+				</button>';
+				$('#brewList').append(temp_html);
+			}
+			
+
+
+			var center = {lat:37.561045, lng:126.990779};
+
+
+
+			// ['<a id="go" href="#5" type="button" class="btn btn-light">서울비어프로젝트</a>', ]
+
+			var locations = [
+			['<a id="go" href="#0" type="button" class="btn btn-light">Amazing Brewing Company</a>', 37.542729, 127.049490],
+			['<a id="go" href="#1" type="button" class="btn btn-light">Magpie Brewing Company</a>', 37.539421, 126.987453],
+			['<a id="go" href="#2" type="button" class="btn btn-light">The Table</a>', 37.569773, 126.984352],
+			['<a id="go" href="#3" type="button" class="btn btn-light">Seoul Gypsy</a>', 37.575013, 126.991524],
+			['<a id="go" href="#4" type="button" class="btn btn-light">Artmonster (Ikseon-dong)</a>', 37.573586, 126.990447],
+			['<a id="go" href="#5" type="button" class="btn btn-light">MysterLee Brewing Co.</a>', 37.543877, 126.947679],
+			['<a id="go" href="#6" type="button" class="btn btn-light">MysterLee Brewing Co.</a>', 37.543877, 126.947679],
+			['<a id="go" href="#7" type="button" class="btn btn-light">Garosu Brewing Company</a>', 37.519500, 127.021800],
+			['<a id="go" href="#8" type="button" class="btn btn-light">Won Nation</a>', 37.550296, 126.918106],
+			['<a id="go" href="#9" type="button" class="btn btn-light">The Table (Mapo-gu)</a>', 37.550920, 126.954838],
+			['<a id="go" href="#10" type="button" class="btn btn-light">BrewDog Outpost Itaewon</a>', 37.534967, 126.996881],
+			['<a id="go" href="#11" type="button" class="btn btn-light">Jafa Brewery</a>', 37.536487, 127.054000],
+			['<a id="go" href="#12" type="button" class="btn btn-light">The Booth Gangnam2</a>', 37.500485, 127.027728],
+			['<a id="go" href="#13" type="button" class="btn btn-light">The Booth Gundae Common Ground</a>', 37.540880, 127.066025],
+			['<a id="go" href="#14" type="button" class="btn btn-light">The Hand and Malt Taproom</a>', 37.575414, 126.970925],
+			['<a id="go" href="#15" type="button" class="btn btn-light">Caligari Brewing (Ikseon)</a>', 37.573327, 126.990581],
+			['<a id="go" href="#16" type="button" class="btn btn-light">Craftworks Taphouse & Bistro Pangyo</a>', 37.386198, 127.114564],
+			['<a id="go" href="#17" type="button" class="btn btn-light">Moonbear Brewing</a>', 37.538718, 126.987308],
+			['<a id="go" href="#18" type="button" class="btn btn-light">Seoul Brewery</a>', 37.545953, 126.914617],
+			['<a id="go" href="#19" type="button" class="btn btn-light">Herzen Brau Bar</a>', 37.499124, 127.025745],
+			['<a id="go" href="#20" type="button" class="btn btn-light">Tetrapod Brewing Co.</a>', 37.540872, 126.989763],
+			['<a id="go" href="#21" type="button" class="btn btn-light">Goose Island Pub (Ikseon)</a>', 37.573035, 126.990274],
+			['<a id="go" href="#22" type="button" class="btn btn-light">Dog & Pig Craft Beer Pub</a>', 37.506433, 126.885322],
+			['<a id="go" href="#23" type="button" class="btn btn-light">7brau Pub Gangnam</a>', 37.503317, 127.026118],
+			['<a id="go" href="#24" type="button" class="btn btn-light">Caligari Brewing (Itaewon)</a>', 37.534709, 126.992141],
+			['<a id="go" href="#25" type="button" class="btn btn-light">Mega CC</a>', 37.511109, 127.098162],
+			['<a id="go" href="#26" type="button" class="btn btn-light">The Hidden Track</a>', 37.582506, 127.030483],
+			['<a id="go" href="#27" type="button" class="btn btn-light">Corner Tap House</a>', 37.557933, 126.939015],
+			['<a id="go" href="#28" type="button" class="btn btn-light">Oktoberfest</a>', 37.498534, 127.025689],
+			['<a id="go" href="#29" type="button" class="btn btn-light">White Rabbit Tap House</a>', 37.539135, 126.987335],
+			['<a id="go" href="#30" type="button" class="btn btn-light">The Booth Gyunglidan</a>', 37.539363, 126.987692],
+			['<a id="go" href="#31" type="button" class="btn btn-light">Space 104</a>', 37.554776, 126.930880],
+			['<a id="go" href="#32" type="button" class="btn btn-light">Steindorf</a>', 37.512878, 127.109389],
+			['<a id="go" href="#33" type="button" class="btn btn-light">Whale Brewing Company</a>', 37.547567, 126.921396],
+			['<a id="go" href="#34" type="button" class="btn btn-light">Devil’s Door</a>', 37.504429, 127.007762],
+			]
+			
+
+			
+
+			var contentString = '<div id="content" onclick="openPub">'+
+			'<div id="siteNotice">'+
+			'</div>'+
+			'<div id="bodyContent">'+
+			'<p><b>Uluru</b>, also referred to as <b>Ayers Rock</b>, is a large ' +
+			'sandstone rock formation in the southern part of the '+
+			'Northern Territory, central Australia. It lies 335&#160;km (208&#160;mi) '+
+			'south west of the nearest large town, Alice Springs; 450&#160;km '+
+			'(280&#160;mi) by road. Kata Tjuta and Uluru are the two major '+
+			'features of the Uluru - Kata Tjuta National Park. Uluru is '+
+			'sacred to the Pitjantjatjara and Yankunytjatjara, the '+
+			'Aboriginal people of the area. It has many springs, waterholes, '+
+			'rock caves and ancient paintings. Uluru is listed as a World '+
+			'Heritage Site.</p>'+
+			'<p>Attribution: Uluru, <a id="go" href="#pubList" >'+
+			'자세히보기</a> '+
+			'(last visited June 22, 2009), onclick()="openPub".</p>'+
+			'</div>'+
+			'</div>';
+
+
+
+
+
+			function initMap(){
+
+
+
+				var map = new google.maps.Map(document.getElementById('map'), {
+					center: new google.maps.LatLng(37.556356, 126.987427),
+					zoom: 12,
+					mapTypeId: google.maps.MapTypeId.ROADMAP
+
+				});
 
 
 
@@ -418,16 +639,17 @@
 
 				google.maps.event.addListener(marker, 'click', (function(marker, i){
 					return function(){
-							// infowindow.setContent(locations[i][0]);
-							infowindow.open(map, marker);
-						}
-					})(marker, i));
+						infowindow.setContent(locations[i][0]);
+						infowindow.open(map, marker);
+					}
+				})(marker, i));
 				if(marker)
 				{
 					marker.addListener('click', function(){
 						map.setZoom(15);
 						map.setCenter(this.getPosition());
 					});
+
 				}
 			}
 
@@ -514,39 +736,8 @@
         }
 
 
-        $(document).ready(function(){
-        	$('#layer-btn').html('');
-        	listing();
-        });
-
-        function listing(){
-
-        	$.ajax({
-        		type: "GET"
-        		url: "/post"
-        		data: {},
-        		success: function(response){
-        			let brewerys = response['brewerys'];
-        			for (let i = 0; i < brewerys.length; i++) {
-        				make_card(brewerys[i]['score'],brewerys[i]['brewery'],brewerys[i]['address'],brewerys[i]['geo'],brewerys[i]['time'],brewerys[i]['image'])
-        			}
-        		}
-        	})
-        }
-
-        function make_card(image, brewery, address, time, score){
-        	let temp_html = '<tr>\
-        	<td>'+image+'</td>\
-        	<td>'+brewery+'</td>\
-        	<td>'+address+'</td>\
-        	<td>'+time+'</td>\
-        	<td>'+score+'</td>\
-        	</tr>';
-        	$('#layer-btn').append(temp_html);
-        }
         
         
-
 
 
     </script>
@@ -555,7 +746,6 @@
     <script async defer
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA904jSCpmX86cFJNW68f15DSUziqpOYeI&callback=initMap"
     async defer></script>
-
 
 
     <div id="sole" class="form-post">
@@ -575,104 +765,111 @@
 
 
 
-    <!-- <button id="layer-btn" href="#layer2" type="button" class="btn btn-outline-warning">Menu</button> -->
 
-    <!-- id="pubList" -->
+
+
 
     
-    <button id="layer-btn" href="#layer2" type="button" class="list-group-item list-group-item-action">
-    	<div class="row">
-    		<div class="col-sm-2">
-    			<img class="images" src="https://scontent-gmp1-1.xx.fbcdn.net/v/t1.0-9/45516047_2125163027811931_5140769931381440512_n.jpg?_nc_cat=109&_nc_ohc=yBjhgKEiswAAX9_uVv9&_nc_ht=scontent-gmp1-1.xx&oh=ae345e9421efd7b63d414ca11f0c8389&oe=5EBF7D07">
-    		</div>
-    		<div class="col" style="margin-top:30px">
-    			<h2>Amazing Brewing Company</h2>
-    			<h5>성동구 성수동1가 27-12, SEOUL</h5>
-    			<h6>Mon-Fri 16:00-01:00 Sat-Sun 12:00-01:00</h6>
-    		</div>
-    		<div class="col-sm-2">
-    			<div class="chart x-80">
-    				<p style="margin-top:20px">83</p>
+
+
+    <div>
+
+
+    	<a href=# id="layer-btn" type="button" class="list-group-item list-group-item-action" onClick="window.open('http://www.tetrapodbrewing.com/','_blank', 'width=auto, height=auto')">
+    		<div class="row">
+    			<div class="col-sm-2">
+    				<img class="images" src="https://scontent-gmp1-1.xx.fbcdn.net/v/t1.0-9/45516047_2125163027811931_5140769931381440512_n.jpg?_nc_cat=109&_nc_ohc=yBjhgKEiswAAX9_uVv9&_nc_ht=scontent-gmp1-1.xx&oh=ae345e9421efd7b63d414ca11f0c8389&oe=5EBF7D07">
     			</div>
-    		</div>
-    	</div>
-
-
-
-    </button>
-    <button id="layer-btn" href="#layer2" type="button" class="list-group-item list-group-item-action">
-    	<div class="row">
-    		<div class="col-sm-2">
-    			<img class="images" src="https://scontent-gmp1-1.xx.fbcdn.net/v/t1.0-9/45516047_2125163027811931_5140769931381440512_n.jpg?_nc_cat=109&_nc_ohc=yBjhgKEiswAAX9_uVv9&_nc_ht=scontent-gmp1-1.xx&oh=ae345e9421efd7b63d414ca11f0c8389&oe=5EBF7D07">
-    		</div>
-    		<div class="col" style="margin-top:30px">
-    			<h2>Amazing Brewing Company</h2>
-    			<h5>성동구 성수동1가 27-12, SEOUL</h5>
-    			<h6>Mon-Fri 16:00-01:00 Sat-Sun 12:00-01:00</h6>
-    		</div>
-    		<div class="col-sm-2">
-    			<div class="chart x-80">
-    				<p style="margin-top:20px">83</p>
+    			<div class="col" style="margin-top:30px">
+    				<h2>Amazing Brewing Company</h2>
+    				<h5>성동구 성수동1가 27-12, SEOUL</h5>
+    				<h6>Mon-Fri 16:00-01:00 Sat-Sun 12:00-01:00</h6>
     			</div>
-    		</div>
-    	</div>
-
-    </button>
-    
-
-
-    
-
-    <div id="pub" class="form-post">
-    	<form>
-    		<div class="form-group">
-    			<h1>브루펍</h1>
-    			<label for="exampleFormControlInput1">아티클 URL</label>
-    			<input id="posting-url" class="form-control" placeholder="">
-    		</div>
-    		<div class="form-group">
-    			<label for="exampleFormControlTextarea1">간단 코멘트</label>
-    			<input id="posting-comment" class="form-control" placeholder="">
-    		</div>
-    		<button id="btn1" type="button" class="btn btn-primary">기사저장</button>
-    	</form>
-    </div>
-
-
-
-
-    <!-- 팝업창 -->
-    <div class="dim-layer">
-    	<div class="dimBg"></div>
-    	<div id="layer2" class="pop-layer">
-    		<div class="pop-container">
-    			<div class="pop-conts">
-    				<!--content //-->
-    				<p class="ctxt mb20">Thank you.<br>
-    					Your registration was submitted successfully.<br>
-    					Selected invitees will be notified by e-mail on JANUARY 24th.<br><br>
-    					Hope to see you soon!
-    				</p>
-
-    				<div class="btn-r">
-    					<a href="#" class="btn-layerClose">Close</a>
+    			<div class="col-sm-1">
+    				<div class="chart x-80">
+    					<p style="margin-top:20px">83</p>
     				</div>
-    				<!--// content-->
+    				<img class="Tmark" src="https://www.ratebeer.com/images/logos/ratebeer_horizontal.svg">
+    			</div>
+    			<div class="col-sm-2">
+    				<div class="chart2 x-80">
+    					<p style="margin-top:20px">83</p>
+    				</div>
+    				<img class="Tmark2" src="https://images.squarespace-cdn.com/content/v1/5a98cbaeda02bcccd242a247/1528163883905-NLF8MW6I0YU2WVC2ZVUN/ke17ZwdGBToddI8pDm48kOy20YrZ8pM7m2Fb1rPf-OBZw-zPPgdn4jUwVcJE1ZvWQUxwkmyExglNqGp0IvTJZUJFbgE-7XRK3dMEBRBhUpxPP_ZK66c5r5qS5LcY9-kcJ2JKD29gwqUawVoZxxM9FhDMMPhobtns2m7Ifzels7s/untappd.png">
+    			</div>
+    		</div>
+    	</a>
+
+
+    	<button id="layer-btn" href="#layer2" type="button" class="list-group-item list-group-item-action">
+    		<div class="row">
+    			<div class="col-sm-2">
+    				<img class="images" src="https://scontent-gmp1-1.xx.fbcdn.net/v/t1.0-9/45516047_2125163027811931_5140769931381440512_n.jpg?_nc_cat=109&_nc_ohc=yBjhgKEiswAAX9_uVv9&_nc_ht=scontent-gmp1-1.xx&oh=ae345e9421efd7b63d414ca11f0c8389&oe=5EBF7D07">
+    			</div>
+    			<div class="col" style="margin-top:30px">
+    				<h2>Amazing Brewing Company</h2>
+    				<h5>성동구 성수동1가 27-12, SEOUL</h5>
+    				<h6>Mon-Fri 16:00-01:00 Sat-Sun 12:00-01:00</h6>
+    			</div>
+    			<div class="col-sm-2">
+    				<div class="chart x-80">
+    					<p style="margin-top:20px">83</p>
+    				</div>
+    			</div>
+    			<div class="col-sm-2">
+    				<div class="chart x-80">
+    					<p style="margin-top:20px">83</p>
+    				</div>
+    			</div>
+    		</div>
+
+    	</button>
+    	
+    </div>
+
+
+
+
+    <a id="floating" href="#next" class="float">
+    	<i class="fa fa-map my-float"></i>
+    </a>
+
+
+
+
+
+
+
+    <div id="pub">
+    	<div class="list" id="brewList"></div>
+    </div>
+
+    <div>
+    	<!-- 팝업창 -->
+    	<div class="dim-layer">
+    		<div class="dimBg"></div>
+    		<div id="layer2" class="pop-layer">
+    			<div class="pop-container">
+    				<div class="pop-conts">
+    					<!--content //-->
+    					<p class="ctxt mb20">Thank you.<br>
+
+    					</p>
+
+    					<div class="btn-r">
+    						<a href="#" class="btn-layerClose">Close</a>
+    					</div>
+    					<!--// content-->
+    				</div>
     			</div>
     		</div>
     	</div>
-    </div>
-    <script type="text/javascript">
-    	$('#layer-btn').click(function(){
-    		var $href = $(this).attr('href');
-    		layer_popup($href);
-    	});
-
-    	$('#layer-btn2').click(function(){
-    		var $href = $(this).attr('href');
-    		layer_popup($href);
-    	});
-    	function layer_popup(el){
+    	<script type="text/javascript">
+    		$('#layer-btn').click(function(){
+    			var $href = $(this).attr('href');
+    			layer_popup($href);
+    		});
+    		function layer_popup(el){
 
 	        var $el = $(el);        //레이어의 id를 $el 변수에 저장
 	        var isDim = $el.prev().hasClass('dimBg');   //dimmed 레이어를 감지하기 위한 boolean 변수
@@ -706,6 +903,7 @@
 
 	    }
 	</script>
+</div>
 
 
 

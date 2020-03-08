@@ -93,6 +93,9 @@
 		#pubList{
 			display: none;
 		}
+		#floating{
+			display: none;
+		}
 		* {
 			font-family: 'Stylish', sans-serif;
 		}
@@ -134,7 +137,22 @@
 		 	padding: 0;
 		 }
 
-		 .btn {cursor:pointer;}
+		 /*길찾기 패*/
+		 #floating-penel{
+		 	position: absolute;
+		 	top: 10px;
+		 	left: 25%;
+		 	z-index: 5;
+		 	background-color: #fff;
+		 	padding: 5px;
+		 	border: 1px solid #999;
+		 	text-align: center;
+		 	font-family: 'Roboto','sans-serif';
+		 	line-height: 30px;
+		 	padding-left: 10px;
+		 }
+
+		 
 
 		 .images{
 		 	width:150px;
@@ -372,7 +390,7 @@
 
 
 
-		 *{padding:0;margin:0;}
+		 
 
 		 body{
 		 	font-family:Verdana, Geneva, sans-serif;
@@ -396,16 +414,80 @@
 		 .my-float{
 		 	margin-top:22px;
 		 }
-		 
+
+		 /*box*/
+		 .box-wrap {
+		 	display: flex;
+		 	align-items: center;
+		 	justify-content: center;
+		 }
+		 .box {
+		 	position: relative; 
+		 	cursor: pointer; 
+		 	overflow: hidden; 
+		 }
+		 .box .row {
+		 	
+		 	
+		 	z-index: 10;
+		 	transform: translatey(0px);
+		 	z-index: 30;
+		 	transition: all 0.35s ease-in-out;
+		 }
+		 .box .info {
+		 	opacity:0; visibility:hidden; z-index: 20;
+		 	position: absolute; left: 0; top: 130px; bottom: 0; right: 0; 
+		 	background: rgba(0,0,0,0.7);
+		 	color: #fff; 
+		 	padding: 5px; 
+		 	transform: translatey(100%);
+		 	text-align:center;
+		 	transition: all 0.35s ease-in-out; 
+		 }
+		 .box .info{
+		 	font-size: 5px padding-bottom:5px; 
+		 }
+		 .box:hover .row {
+		 	transform: translatey(-40px);
+		 }
+		 .box:hover .info {
+		 	opacity:1; visibility: visible; 
+		 	transform: translatey(0);
+		 }
 
 
-
-
-
-
-
-
-		</style>
+		 .box1 {
+		 	
+		 	cursor: pointer; 
+		 	overflow: hidden; 
+		 }
+		 .box1 img {
+		 	z-index: 10;
+		 	transform: translatey(0px);
+		 	z-index: 30;
+		 	transition: all 0.35s ease-in-out;
+		 }
+		 .box1 .info {
+		 	opacity:0; visibility:hidden; z-index: 20;
+		 	position: absolute; left: 2%; top: 80%; bottom: 0; right: 2%; 
+		 	background: rgba(0,0,0,0);
+		 	color: #fff; 
+		 	 
+		 	transform: translatey(100%);
+		 	text-align:center;
+		 	transition: all 0.35s ease-in-out; 
+		 }
+		 .box1 .info{
+		 	font-size: 5px; 
+		 }
+		 .box1:hover img {
+		 	transform: translatey(0%);
+		 }
+		 .box1:hover .info {
+		 	opacity:1; visibility: visible; 
+		 	transform: translatey(0);
+		 }
+	</style>
 
 		<script type="text/javascript">
 			
@@ -414,7 +496,7 @@
 			if ( $('#sole').css('display') == 'block' ) {
 			// posting-box를 가리고
 			$('#sole').hide();
-		} else {
+			} else {
 					// 아니면 posting-box를 펴라
 					$('#next').hide();
 					$('#pub').hide();
@@ -429,51 +511,52 @@
 					$('#next').hide();
 					$('#pub').hide();
 					$('#pubList').hide();	
+					$('#floating').hide();
 				} else {
 					// 아니면 posting-box를 펴라
 					$('#sole').hide();
 					$('#next').show();
 					$('#pub').show();
-					$('#pubList').show();		
+					$('#pubList').show();	
+					$('#floating').show();	
 				}
 			}
-
-			function showPopup() { window.open("08_2_popup.html", "a", "width=400, height=300, left=100, top=50"); }
-
-			
-			
 		</script>
 
 
 	</head>
 	<body>
-
-
-
-		<div class="container">
-			<div class="row">
-
-
-				<img class="btn" id="btn1" onclick = "openPub()" src="https://miro.medium.com/max/1872/1*0PJMNeBQ4ziOj5Qh_OO8MQ.jpeg" width=49.5% height=70% >
-				<img class="btn" onclick = "openSole()" src="https://miro.medium.com/max/1900/1*V23dpOOahD8Q4MJ0c0_Dpw.png" width=50% height=70% >
-
-
-
+		
+		<div class="row">
+			<div class="box1">
+				<img id="btn1" onclick = "openPub()" src="https://miro.medium.com/max/1898/1*JJkY-SwLyQyd4yGscgTAlg.png" width=50% height=100% >
+				<div class="info" style="padding:20px; font-size:10px;">
+				
+				</div>
+			
+				<img onclick = "openSole()" src="https://miro.medium.com/max/1856/1*32x7anoI-yknD4kFjpPz8g.png" width=49.5% height=100%>
+				<div class="info" style="padding:8px; font-size:10px; margin-left:100px;">
+				<h1>BREWPUB &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&ensp;BOTTLESHOP</h1>
+				</div>
 			</div>
 		</div>
+		
+
+
+			
+		
 
 
 
 		<div id="next" class="jumbotron padding">
 			<div class="container">
 				<h1 class="display-4">Find BREWPUB</h1>
-				<p class="lead">This is a modified jumbotron that occupies the entire horizontal space of its parent.</p>
+				<p class="lead"></p>
+				
 				<div id="map"></div>
 
 			</div>
 		</div>
-
-
 
 
 
@@ -493,7 +576,7 @@
 						if (response['result'] == 'success') {
 							let brewerys = response['brewerys'];
 							for (let i = 0; i < brewerys.length; i++) {
-								make_card(brewerys[i]['image'], brewerys[i]['brewery'], brewerys[i]['address'], brewerys[i]['time'], brewerys[i]['score'], brewerys[i]['score2'], i)
+								make_card(brewerys[i]['image'], brewerys[i]['brewery'], brewerys[i]['address'], brewerys[i]['time'], brewerys[i]['score'], brewerys[i]['score2'],  brewerys[i]['web'], brewerys[i]['rank'], i)
 								
 							}
 						} else {
@@ -503,8 +586,9 @@
 					}
 				})
 			}
-			function make_card(image, brewery, address, time, score, score2, i){
-				let temp_html = '<button id="'+i+'" href="#layer2" type="button" class="list list-group-item list-group-item-action">\
+			
+			function make_card(image, brewery, address, time, score, score2, web, rank, i){
+				let temp_html = '<div style="margin-bottom:10px"><a href="/beerList?'+rank+'" target="_blank" id="'+(i+1)+'" type="button" class="box list-group-item list-group-item-action" >\
 				<div class="row">\
 				<div class="col-sm-2">\
 				<img class="images" src="'+image+'">\
@@ -516,7 +600,7 @@
 				</div>\
 				<div class="col-sm-1">\
 				<div class="chart x-'+score+'">\
-				<p style="margin-top:20px">'+score+'</p>\
+				<p style="margin-top:15px">'+score+'</p>\
 				</div>\
 				<img class="Tmark" src="https://www.ratebeer.com/images/logos/ratebeer_horizontal.svg">\
 				</div>\
@@ -527,95 +611,104 @@
 				<img class="Tmark2" src="https://images.squarespace-cdn.com/content/v1/5a98cbaeda02bcccd242a247/1528163883905-NLF8MW6I0YU2WVC2ZVUN/ke17ZwdGBToddI8pDm48kOy20YrZ8pM7m2Fb1rPf-OBZw-zPPgdn4jUwVcJE1ZvWQUxwkmyExglNqGp0IvTJZUJFbgE-7XRK3dMEBRBhUpxPP_ZK66c5r5qS5LcY9-kcJ2JKD29gwqUawVoZxxM9FhDMMPhobtns2m7Ifzels7s/untappd.png">\
 				</div>\
 				</div>\
-				</button>';
+				<div class="info" style="padding:8px; font-size:10px;">\
+				<p>What is NOW tapped?</p>\
+				</div>\
+				</a>\
+				</div>'
 				$('#brewList').append(temp_html);
 			}
-			
+
 
 
 			var center = {lat:37.561045, lng:126.990779};
 
 
 
-			// ['<a id="go" href="#5" type="button" class="btn btn-light">서울비어프로젝트</a>', ]
+    	// ['<a id="go" href="#5" type="button" class="btn btn-light">서울비어프로젝트</a>', ]
 
-			var locations = [
-			['<a id="go" href="#0" type="button" class="btn btn-light">Amazing Brewing Company</a>', 37.542729, 127.049490],
-			['<a id="go" href="#1" type="button" class="btn btn-light">Magpie Brewing Company</a>', 37.539421, 126.987453],
-			['<a id="go" href="#2" type="button" class="btn btn-light">The Table</a>', 37.569773, 126.984352],
-			['<a id="go" href="#3" type="button" class="btn btn-light">Seoul Gypsy</a>', 37.575013, 126.991524],
-			['<a id="go" href="#4" type="button" class="btn btn-light">Artmonster (Ikseon-dong)</a>', 37.573586, 126.990447],
-			['<a id="go" href="#5" type="button" class="btn btn-light">MysterLee Brewing Co.</a>', 37.543877, 126.947679],
-			['<a id="go" href="#6" type="button" class="btn btn-light">MysterLee Brewing Co.</a>', 37.543877, 126.947679],
-			['<a id="go" href="#7" type="button" class="btn btn-light">Garosu Brewing Company</a>', 37.519500, 127.021800],
-			['<a id="go" href="#8" type="button" class="btn btn-light">Won Nation</a>', 37.550296, 126.918106],
-			['<a id="go" href="#9" type="button" class="btn btn-light">The Table (Mapo-gu)</a>', 37.550920, 126.954838],
-			['<a id="go" href="#10" type="button" class="btn btn-light">BrewDog Outpost Itaewon</a>', 37.534967, 126.996881],
-			['<a id="go" href="#11" type="button" class="btn btn-light">Jafa Brewery</a>', 37.536487, 127.054000],
-			['<a id="go" href="#12" type="button" class="btn btn-light">The Booth Gangnam2</a>', 37.500485, 127.027728],
-			['<a id="go" href="#13" type="button" class="btn btn-light">The Booth Gundae Common Ground</a>', 37.540880, 127.066025],
-			['<a id="go" href="#14" type="button" class="btn btn-light">The Hand and Malt Taproom</a>', 37.575414, 126.970925],
-			['<a id="go" href="#15" type="button" class="btn btn-light">Caligari Brewing (Ikseon)</a>', 37.573327, 126.990581],
-			['<a id="go" href="#16" type="button" class="btn btn-light">Craftworks Taphouse & Bistro Pangyo</a>', 37.386198, 127.114564],
-			['<a id="go" href="#17" type="button" class="btn btn-light">Moonbear Brewing</a>', 37.538718, 126.987308],
-			['<a id="go" href="#18" type="button" class="btn btn-light">Seoul Brewery</a>', 37.545953, 126.914617],
-			['<a id="go" href="#19" type="button" class="btn btn-light">Herzen Brau Bar</a>', 37.499124, 127.025745],
-			['<a id="go" href="#20" type="button" class="btn btn-light">Tetrapod Brewing Co.</a>', 37.540872, 126.989763],
-			['<a id="go" href="#21" type="button" class="btn btn-light">Goose Island Pub (Ikseon)</a>', 37.573035, 126.990274],
-			['<a id="go" href="#22" type="button" class="btn btn-light">Dog & Pig Craft Beer Pub</a>', 37.506433, 126.885322],
-			['<a id="go" href="#23" type="button" class="btn btn-light">7brau Pub Gangnam</a>', 37.503317, 127.026118],
-			['<a id="go" href="#24" type="button" class="btn btn-light">Caligari Brewing (Itaewon)</a>', 37.534709, 126.992141],
-			['<a id="go" href="#25" type="button" class="btn btn-light">Mega CC</a>', 37.511109, 127.098162],
-			['<a id="go" href="#26" type="button" class="btn btn-light">The Hidden Track</a>', 37.582506, 127.030483],
-			['<a id="go" href="#27" type="button" class="btn btn-light">Corner Tap House</a>', 37.557933, 126.939015],
-			['<a id="go" href="#28" type="button" class="btn btn-light">Oktoberfest</a>', 37.498534, 127.025689],
-			['<a id="go" href="#29" type="button" class="btn btn-light">White Rabbit Tap House</a>', 37.539135, 126.987335],
-			['<a id="go" href="#30" type="button" class="btn btn-light">The Booth Gyunglidan</a>', 37.539363, 126.987692],
-			['<a id="go" href="#31" type="button" class="btn btn-light">Space 104</a>', 37.554776, 126.930880],
-			['<a id="go" href="#32" type="button" class="btn btn-light">Steindorf</a>', 37.512878, 127.109389],
-			['<a id="go" href="#33" type="button" class="btn btn-light">Whale Brewing Company</a>', 37.547567, 126.921396],
-			['<a id="go" href="#34" type="button" class="btn btn-light">Devil’s Door</a>', 37.504429, 127.007762],
-			]
-			
-
-			
-
-			var contentString = '<div id="content" onclick="openPub">'+
-			'<div id="siteNotice">'+
-			'</div>'+
-			'<div id="bodyContent">'+
-			'<p><b>Uluru</b>, also referred to as <b>Ayers Rock</b>, is a large ' +
-			'sandstone rock formation in the southern part of the '+
-			'Northern Territory, central Australia. It lies 335&#160;km (208&#160;mi) '+
-			'south west of the nearest large town, Alice Springs; 450&#160;km '+
-			'(280&#160;mi) by road. Kata Tjuta and Uluru are the two major '+
-			'features of the Uluru - Kata Tjuta National Park. Uluru is '+
-			'sacred to the Pitjantjatjara and Yankunytjatjara, the '+
-			'Aboriginal people of the area. It has many springs, waterholes, '+
-			'rock caves and ancient paintings. Uluru is listed as a World '+
-			'Heritage Site.</p>'+
-			'<p>Attribution: Uluru, <a id="go" href="#pubList" >'+
-			'자세히보기</a> '+
-			'(last visited June 22, 2009), onclick()="openPub".</p>'+
-			'</div>'+
-			'</div>';
+    	var locations = [
+    	['<a id="go" href="#0" type="button" class="btn btn-light">Amazing Brewing Company</a>', 37.542729, 127.049490],
+    	['<a id="go" href="#1" type="button" class="btn btn-light">Magpie Brewing Company</a>', 37.539421, 126.987453],
+    	['<a id="go" href="#2" type="button" class="btn btn-light">The Table</a>', 37.569773, 126.984352],
+    	['<a id="go" href="#3" type="button" class="btn btn-light">Seoul Gypsy</a>', 37.575013, 126.991524],
+    	['<a id="go" href="#4" type="button" class="btn btn-light">Artmonster (Ikseon-dong)</a>', 37.573586, 126.990447],
+    	['<a id="go" href="#5" type="button" class="btn btn-light">MysterLee Brewing Co.</a>', 37.543877, 126.947679],
+    	['<a id="go" href="#6" type="button" class="btn btn-light">MysterLee Brewing Co.</a>', 37.543877, 126.947679],
+    	['<a id="go" href="#7" type="button" class="btn btn-light">Garosu Brewing Company</a>', 37.519500, 127.021800],
+    	['<a id="go" href="#8" type="button" class="btn btn-light">Won Nation</a>', 37.550296, 126.918106],
+    	['<a id="go" href="#9" type="button" class="btn btn-light">The Table (Mapo-gu)</a>', 37.550920, 126.954838],
+    	['<a id="go" href="#10" type="button" class="btn btn-light">BrewDog Outpost Itaewon</a>', 37.534967, 126.996881],
+    	['<a id="go" href="#11" type="button" class="btn btn-light">Jafa Brewery</a>', 37.536487, 127.054000],
+    	['<a id="go" href="#12" type="button" class="btn btn-light">The Booth Gangnam2</a>', 37.500485, 127.027728],
+    	['<a id="go" href="#13" type="button" class="btn btn-light">The Booth Gundae Common Ground</a>', 37.540880, 127.066025],
+    	['<a id="go" href="#14" type="button" class="btn btn-light">The Hand and Malt Taproom</a>', 37.575414, 126.970925],
+    	['<a id="go" href="#15" type="button" class="btn btn-light">Caligari Brewing (Ikseon)</a>', 37.573327, 126.990581],
+    	['<a id="go" href="#16" type="button" class="btn btn-light">Craftworks Taphouse & Bistro Pangyo</a>', 37.386198, 127.114564],
+    	['<a id="go" href="#17" type="button" class="btn btn-light">Moonbear Brewing</a>', 37.538718, 126.987308],
+    	['<a id="go" href="#18" type="button" class="btn btn-light">Seoul Brewery</a>', 37.545953, 126.914617],
+    	['<a id="go" href="#19" type="button" class="btn btn-light">Herzen Brau Bar</a>', 37.499124, 127.025745],
+    	['<a id="go" href="#20" type="button" class="btn btn-light">Tetrapod Brewing Co.</a>', 37.540872, 126.989763],
+    	['<a id="go" href="#21" type="button" class="btn btn-light">Goose Island Pub (Ikseon)</a>', 37.573035, 126.990274],
+    	['<a id="go" href="#22" type="button" class="btn btn-light">Dog & Pig Craft Beer Pub</a>', 37.506433, 126.885322],
+    	['<a id="go" href="#23" type="button" class="btn btn-light">7brau Pub Gangnam</a>', 37.503317, 127.026118],
+    	['<a id="go" href="#24" type="button" class="btn btn-light">Caligari Brewing (Itaewon)</a>', 37.534709, 126.992141],
+    	['<a id="go" href="#25" type="button" class="btn btn-light">Mega CC</a>', 37.511109, 127.098162],
+    	['<a id="go" href="#26" type="button" class="btn btn-light">The Hidden Track</a>', 37.582506, 127.030483],
+    	['<a id="go" href="#27" type="button" class="btn btn-light">Corner Tap House</a>', 37.557933, 126.939015],
+    	['<a id="go" href="#28" type="button" class="btn btn-light">Oktoberfest</a>', 37.498534, 127.025689],
+    	['<a id="go" href="#29" type="button" class="btn btn-light">White Rabbit Tap House</a>', 37.539135, 126.987335],
+    	['<a id="go" href="#30" type="button" class="btn btn-light">The Booth Gyunglidan</a>', 37.539363, 126.987692],
+    	['<a id="go" href="#31" type="button" class="btn btn-light">Space 104</a>', 37.554776, 126.930880],
+    	['<a id="go" href="#32" type="button" class="btn btn-light">Steindorf</a>', 37.512878, 127.109389],
+    	['<a id="go" href="#33" type="button" class="btn btn-light">Whale Brewing Company</a>', 37.547567, 126.921396],
+    	['<a id="go" href="#34" type="button" class="btn btn-light">Devil’s Door</a>', 37.504429, 127.007762],
+    	]
 
 
 
 
+    	var contentString = '<div id="content" onclick="openPub">'+
+    	'<div id="siteNotice">'+
+    	'</div>'+
+    	'<div id="bodyContent">'+
+    	'<p><b>Uluru</b>, also referred to as <b>Ayers Rock</b>, is a large ' +
+    	'sandstone rock formation in the southern part of the '+
+    	'Northern Territory, central Australia. It lies 335&#160;km (208&#160;mi) '+
+    	'south west of the nearest large town, Alice Springs; 450&#160;km '+
+    	'(280&#160;mi) by road. Kata Tjuta and Uluru are the two major '+
+    	'features of the Uluru - Kata Tjuta National Park. Uluru is '+
+    	'sacred to the Pitjantjatjara and Yankunytjatjara, the '+
+    	'Aboriginal people of the area. It has many springs, waterholes, '+
+    	'rock caves and ancient paintings. Uluru is listed as a World '+
+    	'Heritage Site.</p>'+
+    	'<p>Attribution: Uluru, <a id="go" href="#pubList" >'+
+    	'자세히보기</a> '+
+    	'(last visited June 22, 2009), onclick()="openPub".</p>'+
+    	'</div>'+
+    	'</div>';
 
-			function initMap(){
 
 
 
-				var map = new google.maps.Map(document.getElementById('map'), {
-					center: new google.maps.LatLng(37.556356, 126.987427),
-					zoom: 12,
-					mapTypeId: google.maps.MapTypeId.ROADMAP
 
-				});
+    	function initMap(){
 
 
+
+    		var map = new google.maps.Map(document.getElementById('map'), {
+    			center: new google.maps.LatLng(37.556356, 126.987427),
+    			zoom: 12,
+    			panControl: false,
+    			scaleControl: false,
+    			mapTypeControl: false,
+    			streetViewControl: false,
+    			fullscreenControl: false
+
+
+
+
+    		});
 
 
 			// infoWindow
@@ -656,59 +749,23 @@
 
 
 
-
-
-
-			// Try HTML5 geolocation.
-			var map, infoWindow;
-			infoWindow = new google.maps.InfoWindow;
-			if (navigator.geolocation){
-				navigator.geolocation.getCurrentPosition(function(position){
-					var pos = {
-						lat: position.coords.latitude,
-						lng: position.coords.longitude
-					};
-
-					infoWindow.setPosition(pos);
-					infoWindow.setContent('지금여기');
-					infoWindow.open(map);
-					map.setCenter(pos);
-				}, function(){
-					handleLocationError(true, infoWindow, map.getCenter());
-
-				});
-			} else {
-				// Browser doesn't support Geolocation
-				handleLocationError(false, infoWindow, map.getCenter());
-			}
-
-
-
-
-
 			var centerControlDiv = document.createElement('div');
 			var centerControl = new CenterControl(centerControlDiv, map);
 			centerControlDiv.index = 1;
-			map.controls[google.maps.ControlPosition.TOP_CENTER].push(centerControlDiv);
+			map.controls[google.maps.ControlPosition.BOTTOM_CENTER].push(centerControlDiv);
 
 		}
 
+		
 
-		// 위치
-		function handleLocationError(browserHasGeolocation, infoWindow, pos) {
-			infoWindow.setPosition(pos);
-			infoWindow.setContent(browserHasGeolocation ?
-				'Error: The Geolocation service failed.' :
-				'Error: Your browser doesn\'t support geolacation.');
-			infoWindow.open(map);
-		}
-
+		
 		function CenterControl(controlDiv, map, pos){
+
 			// Set CSS for the control border.
 			var controlUI = document.createElement('div');
 			controlUI.style.backgroundColor = '#fff';
 			controlUI.style.border = '2px solid #fff';
-			controlUI.style.borderRadius = '3px';
+			controlUI.style.borderRadius = '20px';
 			controlUI.style.boxShadow = '0 2px 6px rgba(0,0,0,.3)';
 			controlUI.style.cursor = 'pointer';
 			controlUI.style.marginBottom = '22px';
@@ -772,60 +829,68 @@
     
 
 
-    <div>
 
 
-    	<a href=# id="layer-btn" type="button" class="list-group-item list-group-item-action" onClick="window.open('http://www.tetrapodbrewing.com/','_blank', 'width=auto, height=auto')">
-    		<div class="row">
-    			<div class="col-sm-2">
-    				<img class="images" src="https://scontent-gmp1-1.xx.fbcdn.net/v/t1.0-9/45516047_2125163027811931_5140769931381440512_n.jpg?_nc_cat=109&_nc_ohc=yBjhgKEiswAAX9_uVv9&_nc_ht=scontent-gmp1-1.xx&oh=ae345e9421efd7b63d414ca11f0c8389&oe=5EBF7D07">
+
+
+   <!--  <a href="/beerList" id="layer-btn" type="button" class="box list-group-item list-group-item-action" >
+
+    	<div class="row">
+    		<div class="col-sm-2">
+    			<img class="images" src="https://scontent-gmp1-1.xx.fbcdn.net/v/t1.0-9/45516047_2125163027811931_5140769931381440512_n.jpg?_nc_cat=109&_nc_ohc=yBjhgKEiswAAX9_uVv9&_nc_ht=scontent-gmp1-1.xx&oh=ae345e9421efd7b63d414ca11f0c8389&oe=5EBF7D07">
+    		</div>
+    		<div class="col" style="margin-top:30px">
+    			<h2>Amazing Brewing Company</h2>
+    			<h5>성동구 성수동1가 27-12, SEOUL</h5>
+    			<h6>Mon-Fri 16:00-01:00 Sat-Sun 12:00-01:00</h6>
+    		</div>
+    		<div class="col-sm-1">
+    			<div class="chart x-80">
+    				<p style="margin-top:20px">83</p>
     			</div>
-    			<div class="col" style="margin-top:30px">
-    				<h2>Amazing Brewing Company</h2>
-    				<h5>성동구 성수동1가 27-12, SEOUL</h5>
-    				<h6>Mon-Fri 16:00-01:00 Sat-Sun 12:00-01:00</h6>
+    			<img class="Tmark" src="https://www.ratebeer.com/images/logos/ratebeer_horizontal.svg">
+    		</div>
+    		<div class="col-sm-2">
+    			<div class="chart2 x-80">
+    				<p style="margin-top:20px">83</p>
     			</div>
-    			<div class="col-sm-1">
-    				<div class="chart x-80">
-    					<p style="margin-top:20px">83</p>
-    				</div>
-    				<img class="Tmark" src="https://www.ratebeer.com/images/logos/ratebeer_horizontal.svg">
-    			</div>
-    			<div class="col-sm-2">
-    				<div class="chart2 x-80">
-    					<p style="margin-top:20px">83</p>
-    				</div>
-    				<img class="Tmark2" src="https://images.squarespace-cdn.com/content/v1/5a98cbaeda02bcccd242a247/1528163883905-NLF8MW6I0YU2WVC2ZVUN/ke17ZwdGBToddI8pDm48kOy20YrZ8pM7m2Fb1rPf-OBZw-zPPgdn4jUwVcJE1ZvWQUxwkmyExglNqGp0IvTJZUJFbgE-7XRK3dMEBRBhUpxPP_ZK66c5r5qS5LcY9-kcJ2JKD29gwqUawVoZxxM9FhDMMPhobtns2m7Ifzels7s/untappd.png">
+    			<img class="Tmark2" src="https://images.squarespace-cdn.com/content/v1/5a98cbaeda02bcccd242a247/1528163883905-NLF8MW6I0YU2WVC2ZVUN/ke17ZwdGBToddI8pDm48kOy20YrZ8pM7m2Fb1rPf-OBZw-zPPgdn4jUwVcJE1ZvWQUxwkmyExglNqGp0IvTJZUJFbgE-7XRK3dMEBRBhUpxPP_ZK66c5r5qS5LcY9-kcJ2JKD29gwqUawVoZxxM9FhDMMPhobtns2m7Ifzels7s/untappd.png">
+    		</div>
+    	</div>
+    	<div class="info" style="padding:8px; font-size:10px;">
+    		<p>http://amazingbrewing.co.kr/</p>
+    	</div>
+    </a>
+
+    
+
+    <button id="layer-btn2" href="#layer2" type="button" class="list-group-item list-group-item-action">
+    	<div class="row">
+    		<div class="col-sm-2">
+    			<img class="images" src="https://scontent-gmp1-1.xx.fbcdn.net/v/t1.0-9/45516047_2125163027811931_5140769931381440512_n.jpg?_nc_cat=109&_nc_ohc=yBjhgKEiswAAX9_uVv9&_nc_ht=scontent-gmp1-1.xx&oh=ae345e9421efd7b63d414ca11f0c8389&oe=5EBF7D07">
+    		</div>
+    		<div class="col" style="margin-top:30px">
+    			<h2>Amazing Brewing Company</h2>
+    			<h5>성동구 성수동1가 27-12, SEOUL</h5>
+    			<h6>Mon-Fri 16:00-01:00 Sat-Sun 12:00-01:00</h6>
+    		</div>
+    		<div class="col-sm-2">
+    			<div class="chart x-80">
+    				<p style="margin-top:20px">83</p>
     			</div>
     		</div>
-    	</a>
-
-
-    	<button id="layer-btn" href="#layer2" type="button" class="list-group-item list-group-item-action">
-    		<div class="row">
-    			<div class="col-sm-2">
-    				<img class="images" src="https://scontent-gmp1-1.xx.fbcdn.net/v/t1.0-9/45516047_2125163027811931_5140769931381440512_n.jpg?_nc_cat=109&_nc_ohc=yBjhgKEiswAAX9_uVv9&_nc_ht=scontent-gmp1-1.xx&oh=ae345e9421efd7b63d414ca11f0c8389&oe=5EBF7D07">
-    			</div>
-    			<div class="col" style="margin-top:30px">
-    				<h2>Amazing Brewing Company</h2>
-    				<h5>성동구 성수동1가 27-12, SEOUL</h5>
-    				<h6>Mon-Fri 16:00-01:00 Sat-Sun 12:00-01:00</h6>
-    			</div>
-    			<div class="col-sm-2">
-    				<div class="chart x-80">
-    					<p style="margin-top:20px">83</p>
-    				</div>
-    			</div>
-    			<div class="col-sm-2">
-    				<div class="chart x-80">
-    					<p style="margin-top:20px">83</p>
-    				</div>
+    		<div class="col-sm-2">
+    			<div class="chart x-80">
+    				<p style="margin-top:20px">83</p>
     			</div>
     		</div>
+    	</div>
 
-    	</button>
-    	
-    </div>
+    </button> -->
+
+
+
+
 
 
 
@@ -837,15 +902,15 @@
 
 
 
-
-
-
     <div id="pub">
     	<div class="list" id="brewList"></div>
     </div>
 
+
+
+<!-- 팝업창 -->
     <div>
-    	<!-- 팝업창 -->
+    	
     	<div class="dim-layer">
     		<div class="dimBg"></div>
     		<div id="layer2" class="pop-layer">
@@ -864,8 +929,9 @@
     			</div>
     		</div>
     	</div>
+    	<!-- 팝업창 -->
     	<script type="text/javascript">
-    		$('#layer-btn').click(function(){
+    		$('#layer-btn2').click(function(){
     			var $href = $(this).attr('href');
     			layer_popup($href);
     		});
@@ -902,8 +968,8 @@
 	        });
 
 	    }
-	</script>
-</div>
+		</script>
+	</div>
 
 
 

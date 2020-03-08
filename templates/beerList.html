@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>amazingbrewing beer list</title>
+	<meta charset="utf-8">
+	<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+	<!-- Bootstrap CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+	<!-- JS -->   
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+
+	<!-- 구글폰트 -->
+	<link href="https://fonts.googleapis.com/css?family=Nanum+Myeongjo&display=swap" rel="stylesheet">
+
+	<style type="text/css">
+		
+		.images{
+			width:150px;
+			height:150px;
+			margin-left: 20%;
+		}
+		.float{
+		 	margin-left:300px;
+		 	margin-top:40px;
+		 	width:60px;
+		 	height:60px;
+		 	bottom:40px;
+		 	right:20px;
+		 	background-color:#FFF;
+		 	color:#000;
+		 	border-radius:30px;
+		 	text-align:center;
+		 	
+		 }
+
+		 .my-float{
+		 	margin-top:5px;
+		 }
+		 .col-sm{
+		 	margin-right:70px;
+		 }
+
+
+	</style>
+
+
+
+</head>
+<body>
+
+
+
+	<!-- <script>
+
+		var getParameters = function (paramName) {
+		// 리턴값을 위한 변수 선언
+		var returnValue;
+
+		// 현재 URL 가져오기
+		
+
+
+		// get 파라미터 값을 가져올 수 있는 ? 를 기점으로 slice 한 후 split 으로 나눔
+		var parameters = (url.slice(url.indexOf('?') + 1, url.length)).split('&');
+
+
+		// 나누어진 값의 비교를 통해 paramName 으로 요청된 데이터의 값만 return
+		for (var i = 0; i < parameters.length; i++) {
+				var varName = parameters[i].split('=')[0];
+				if (varName.toUpperCase() == paramName.toUpperCase()) {
+					returnValue = parameters[i].split('=')[1];
+					return decodeURIComponent(returnValue);
+				}
+			}
+		};
+
+		alert(getParameters('name'));
+		
+	</script> -->
+
+
+	<script type="text/javascript">
+		var url = location.href;
+
+		var slice1 = url.slice(url.indexOf('?') + 1, url.length)
+
+		$(document).ready(function(){
+			$('#beerList').html('');
+			listing();
+		});
+		function listing(){
+
+			$.ajax({
+				type: "GET",
+				url: '/list?rank_give='+slice1,
+				data: {},
+				success: function(response){
+					if (response['result'] == 'success') {
+						let beerList = response['beerList'];
+						for (let i = 0; i < beerList.length; i++) {
+							make_card(beerList[i]['img'], beerList[i]['brewery'], beerList[i]['sec'], beerList[i]['des'])
+
+						}
+					} else {
+						alert('데이터를 가져오지 못했습니다');
+					}
+
+				}
+			})
+		}
+
+		function make_card(img, brewery, sec, des){
+			let temp_html = '<div id="layer-btn2" class="list-group-item list-group-item-action">\
+			<div class="row">\
+			<div class="col-sm-2">\
+			<img class="images" src="'+img+'">\
+			</div>\
+			<div class="col" style="margin-top:10px;">\
+			<h2>'+brewery+'</h2>\
+			<h5>'+sec+'</h5>\
+			<h7>'+des+'</h7>\
+			</div>\
+			<div class="col-sm-2"></div>\
+			</div>\
+			</div>'
+			$('#beerList').append(temp_html);
+		}
+
+	</script>
+
+<div class="row">
+	<div class="col-sm">
+		
+	</div>
+	<div class="col">
+		<h1 style="margin:50px">NOW TAPPED</h1>
+	</div>
+	<div class="col">
+		<button id="floating" href="#next" class="float" onclick="window.close()">
+		<i class="fa fa-close my-float"></i>
+		</button>
+	</div>
+	
+
+	
+		
+	
+</div>
+
+	<div class="list" id="beerList"></div>
+
+
+
+	
+
+
+
+
+</body>
+</html>
